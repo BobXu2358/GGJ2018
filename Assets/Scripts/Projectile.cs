@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
+    public float bulletLifeTime;
     private GameObject player;
 
     void Start()
     {
+        Destroy(gameObject, bulletLifeTime);
         //find player object
         player = GameObject.FindWithTag("Player");
     }
