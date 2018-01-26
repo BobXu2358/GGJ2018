@@ -12,9 +12,13 @@ public class PlayerAction : MonoBehaviour {
         moveOffset.x += Input.GetAxisRaw("Horizontal") * moveSpeed;
         playerTf.position += moveOffset;
 
-        if(Input.GetButton("Jump") && grounded){
+        if(Input.GetButtonDown("Jump") && grounded){
             grounded = false;
             playerRb.AddForce(0, jumpForce, 0);
+        }
+
+        if(Input.GetButtonDown("Fire1")){
+
         }
     }
 
