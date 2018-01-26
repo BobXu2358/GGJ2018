@@ -3,8 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAction : MonoBehaviour {
     public Transform playerTf;
-    public Rigidbody playerRb;
+    public BoxCollider2D playerBc;
+    public Rigidbody2D playerRb;
     public Transform mapGroundTf;
+    public BoxCollider2D mapGroundBc;
     public float moveSpeed;
     public float jumpForce;
     bool grounded = true;
@@ -14,19 +16,19 @@ public class PlayerAction : MonoBehaviour {
         moveOffset.x += Input.GetAxisRaw("Horizontal") * moveSpeed;
         Vector3 finPlayerPos = playerTf.position + moveOffset;
 
-        if(finPlayerPos.x - playerTf.lossyScale.x / 2 <= mapGroundTf.position.x - mapGroundTf.lossyScale.x / 2)
-            finPlayerPos.x = mapGroundTf.position.x - mapGroundTf.lossyScale.x / 2 + playerTf.lossyScale.x / 2;
-        if(finPlayerPos.x + playerTf.lossyScale.x / 2 >= mapGroundTf.position.x + mapGroundTf.lossyScale.x / 2)
-            finPlayerPos.x = mapGroundTf.position.x + mapGroundTf.lossyScale.x / 2 - playerTf.lossyScale.x / 2;
+        if(finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
+            finPlayerPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + playerBc.size.x / 2;
+        if(finPlayerPos.x + playerBc.size.x / 2 >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
+            finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
 
         playerTf.position = finPlayerPos;
 
-        if(playerTf.position.y - playerTf.lossyScale.y / 2 <= mapGroundTf.position.y + mapGroundTf.lossyScale.y / 2)
+        if(playerTf.position.y - playerBc.size.y / 2 <= mapGroundTf.position.y + mapGroundBc.size.y / 2)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         if(grounded && Input.GetButton("Jump")){
             grounded = false;
-            playerRb.AddForce(0, jumpForce, 0);
+            playerRb.AddForce(new Vector2(0, jumpForce));
         }
 
         if(Input.GetButtonDown("Fire1")){
@@ -34,8 +36,8 @@ public class PlayerAction : MonoBehaviour {
         }
     }
 
-    void OnCollisionStay(Collision collisionObject){
-        if(playerTf.position.y - playerTf.lossyScale.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.transform.lossyScale.y / 2){
+    void OnCollisionStay2D(Collision2D collisionObject){
+        if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
             grounded = true;
         }
     }
