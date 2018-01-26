@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-    public float speed;
+    private GameObject player;
 
     void Start()
     {
-        
+        //find player object
+        player = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -20,9 +21,20 @@ public class Projectile : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
+            //destory the bullet
             Destroy(col.gameObject);
-            this.gameObject.GetComponent<PlayerAction>().enabled = false;
+
+            //disable player control script
+            player.GetComponent<PlayerAction>().enabled = false;
+
+            //change player tag
+            player.tag = "Enemy";
+
+            //enable target's player control script
             col.gameObject.GetComponent<PlayerAction>().enabled = true;
+
+            //change the tag of new player
+            col.gameObject.tag = "Player";
         }
     }
 }
