@@ -52,6 +52,7 @@ public class PlayerAction : MonoBehaviour {
 
             //instantiate bullet
             GameObject bullet = Instantiate(Projectile, fireOffset.position, fireOffset.rotation);
+            dir.Normalize();
             //let it go
             bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
         }
