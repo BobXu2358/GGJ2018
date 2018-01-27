@@ -28,8 +28,6 @@ public class Projectile : MonoBehaviour {
 
             //disable player control script
             player.GetComponent<PlayerAction>().enabled = false;
-            player.GetComponent<MainController>().enabled = false;
-            player.GetComponent<Fire>().enabled = false;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
             //change player tag
@@ -37,8 +35,6 @@ public class Projectile : MonoBehaviour {
 
             //enable target's player control script
             col.gameObject.GetComponent<PlayerAction>().enabled = true;
-            col.gameObject.GetComponent<MainController>().enabled = true;
-            col.gameObject.GetComponent<Fire>().enabled = true;
 
             //change the tag of new player
             col.gameObject.tag = "Player";

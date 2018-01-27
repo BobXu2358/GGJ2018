@@ -322,9 +322,7 @@ GameObject:
   - component: {fileID: 1014678484}
   - component: {fileID: 1014678483}
   - component: {fileID: 1014678482}
-  - component: {fileID: 1014678486}
   - component: {fileID: 1014678481}
-  - component: {fileID: 1014678480}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Enemy
@@ -332,20 +330,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1014678480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014678479}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4671506ff33dfd7408915e0dc6c7d885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
-  speed: 3
-  offset: {fileID: 1014678485}
 --- !u!50 &1014678481
 Rigidbody2D:
   serializedVersion: 4
@@ -377,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138cd93b0e25eed4cbc3c6adac57b369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 0
   playerTf: {fileID: 1014678485}
   playerBc: {fileID: 1014678483}
   playerRb: {fileID: 1014678481}
@@ -384,6 +369,9 @@ MonoBehaviour:
   mapGroundBc: {fileID: 1737763575}
   moveSpeed: 3
   jumpForce: 150
+  Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
+  fireSpeed: 0
+  fireOffset: {fileID: 1014678485}
 --- !u!61 &1014678483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -466,21 +454,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1014678486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014678479}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f42c10be3b0a7d41b314ca4c75e8651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTf: {fileID: 1014678485}
-  playerBc: {fileID: 1014678483}
-  mapGroundTf: {fileID: 1737763574}
-  mapGroundBc: {fileID: 1737763575}
 --- !u!1 &1323476974
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,9 +565,7 @@ GameObject:
   - component: {fileID: 1541399628}
   - component: {fileID: 1541399630}
   - component: {fileID: 1541399632}
-  - component: {fileID: 1541399634}
   - component: {fileID: 1541399631}
-  - component: {fileID: 1541399633}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -653,7 +624,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541399627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.47, y: 7.11, z: 0}
+  m_LocalPosition: {x: -7.56, y: 5.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -715,6 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138cd93b0e25eed4cbc3c6adac57b369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 0
   playerTf: {fileID: 1541399629}
   playerBc: {fileID: 1541399630}
   playerRb: {fileID: 1541399631}
@@ -722,35 +694,9 @@ MonoBehaviour:
   mapGroundBc: {fileID: 1737763575}
   moveSpeed: 3
   jumpForce: 150
---- !u!114 &1541399633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541399627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f42c10be3b0a7d41b314ca4c75e8651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTf: {fileID: 1541399629}
-  playerBc: {fileID: 1541399630}
-  mapGroundTf: {fileID: 1737763574}
-  mapGroundBc: {fileID: 1737763575}
---- !u!114 &1541399634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541399627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4671506ff33dfd7408915e0dc6c7d885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
-  speed: 3
-  offset: {fileID: 1541399629}
+  fireSpeed: 0
+  fireOffset: {fileID: 1541399629}
 --- !u!1 &1737763572
 GameObject:
   m_ObjectHideFlags: 0
