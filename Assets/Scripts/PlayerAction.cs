@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 public class PlayerAction : MonoBehaviour {
     public CharacterType playerType;
     public Transform playerTf;
-    public BoxCollider2D playerBc;
+    public Collider2D playerBc;
     public Rigidbody2D playerRb;
     public Transform mapGroundTf;
-    public BoxCollider2D mapGroundBc;
+    public Collider2D mapGroundBc;
     public float moveSpeed;
     public float jumpForce;
     public GameObject Projectile;
