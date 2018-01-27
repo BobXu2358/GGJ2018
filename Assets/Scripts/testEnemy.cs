@@ -17,6 +17,7 @@ public class testEnemy : MonoBehaviour {
     public float AttackInterval = 2.0f;  //发射子弹的间隔
     public EnemyType m_Type;             //怪物类型
     public GameObject Prefab_Bullet;     //子弹的预制体
+    public float bulletSpeed = 0.3f;     //子弹速度
 
     
     private Enemy _enemy;
@@ -48,15 +49,7 @@ public class testEnemy : MonoBehaviour {
         m_Animator = this.GetComponent<Animator>();
         _enemy._Animator = m_Animator;
 
-        Player = GameObject.FindWithTag("Player");
-        if (Player != null)
-        {
-            _enemy.Player = Player;
-        }
-        else
-        {
-            Debug.LogError("找不到tag为Player的物体！");
-        }
+        SetPlayer();
     }
 	
 	// Update is called once per frame
@@ -65,17 +58,18 @@ public class testEnemy : MonoBehaviour {
         Shoot();
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject ooo = collision.gameObject;
+        ContactPoint2D Cp = collision.contacts[0];
 
-        if (ooo.layer == LayerMask.NameToLayer("Object"))
+        if (ooo.tag == "Obstacle")
         {
-            //PlayBumpAudio();
-        }
-
-        if (ooo.tag == "Player")
-        {
+            if ((this.transform.localScale.x > 0.0f && Cp.point.x < _enemy.PatrolTargetPos.x) || (this.transform.localScale.x < 0.0f && Cp.point.x > _enemy.PatrolTargetPos.x))
+            {
+                _enemy.PatrolTargetPos = 2.0f * this.transform.position - _enemy.PatrolTargetPos;
+                _enemy.SetEnemyState(new EnemyStandingState(_enemy));
+            }
         }
     }
 
@@ -100,7 +94,11 @@ public class testEnemy : MonoBehaviour {
     {
         if (_enemy.trigger_Shoot)
         {
-            Instantiate(Prefab_Bullet, this.transform.position, Quaternion.identity);
+            Vector2 dir = Player.transform.position - this.transform.position;
+
+            GameObject bullet = Instantiate(Prefab_Bullet, this.transform.position, this.transform.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;
+
             _enemy.trigger_Shoot = false;
         }
     }
@@ -123,4 +121,19 @@ public class testEnemy : MonoBehaviour {
         m_AudioSource.Play();
     }
 
+    /// <summary>
+    /// 设置敌人要攻击的玩家目标
+    /// </summary>
+    public void SetPlayer()
+    {
+        Player = GameObject.FindWithTag("Player");
+        if (Player != null)
+        {
+            _enemy.Player = Player;
+        }
+        else
+        {
+            Debug.LogError("找不到tag为Player的物体！");
+        }
+    }
 }

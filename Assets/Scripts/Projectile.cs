@@ -23,26 +23,38 @@ public class Projectile : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
-
             //destory the bullet
             Destroy(gameObject);
 
             //disable player control script
             player.GetComponent<PlayerAction>().enabled = false;
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
             //change player tag
             player.tag = "Enemy";
 
             //enable target's player control script
-
             col.gameObject.GetComponent<PlayerAction>().enabled = true;
+
             //change the tag of new player
             col.gameObject.tag = "Player";
 
             //camera stuff
             Camera.main.GetComponent<CameraManager>().followingTf = col.gameObject.transform;
-            Camera.main.GetComponent<CameraManager>().followingBc = (BoxCollider2D) col;
+            Camera.main.GetComponent<CameraManager>().followingBc = (BoxCollider2D)col;
+
+            ResetTargetPlayer();
+        }
+    }
+
+    /// <summary>
+    /// 重新设置敌人脚本中的玩家
+    /// </summary>
+    void ResetTargetPlayer()
+    {
+        GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject em in enemyList)
+        {
+            em.GetComponent<testEnemy>().SetPlayer();
         }
     }
 }
