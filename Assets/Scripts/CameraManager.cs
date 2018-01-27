@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour {
     public Vector3 cameraOffset = new Vector3(0, 0, -10);
     float cameraHalfWidth;
     float cameraHalfHeight;
+    public float cameraMoveTime = 0.15f;
 
     void Start(){
         cameraHalfHeight = mainCam.orthographicSize;
@@ -24,6 +25,7 @@ public class CameraManager : MonoBehaviour {
             finCameraPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - cameraHalfWidth;
         if(finCameraPos.y - cameraHalfHeight <= mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y)
             finCameraPos.y = mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y + cameraHalfHeight;
-        cameraTf.position = finCameraPos;
+        Vector3 velocity = Vector3.zero;
+        cameraTf.position = Vector3.SmoothDamp(cameraTf.position, finCameraPos, ref velocity, cameraMoveTime);
     }
 }

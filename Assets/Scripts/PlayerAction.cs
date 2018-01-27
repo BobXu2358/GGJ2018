@@ -18,91 +18,96 @@ public class PlayerAction : MonoBehaviour {
     public GameObject PiercingBullet;
     public float SprintSpeed;
     public bool success = false;
-
     private float realTimeSpeed;
 
     void Start()
     {
         realTimeSpeed = moveSpeed;
-    } 
+    }
 
-    void FixedUpdate() {
-        if(playerType != CharacterType.None){
-            //Control player to move horizontally
-            Debug.Log(realTimeSpeed);
-            Vector2 playerSpeed = playerRb.velocity;
-            playerSpeed.x = Input.GetAxis("Horizontal") * realTimeSpeed;
-            playerRb.velocity = playerSpeed;
-
-            if (grounded)
-            {
-                if (playerRb.velocity.magnitude >= 0.1f)
-                {
-                    this.GetComponent<Animator>().SetBool("isMoving",true);
-                }
-                else
-                {
-                    this.GetComponent<Animator>().SetBool("isMoving", false);
-                }
-            }
-            
-            //Control player to jump
-            if(grounded && Input.GetButton("Jump")){
-                grounded = false;
-                playerRb.AddForce(new Vector2(0, jumpForce));
-            }
-        }
-
-        //Make player not move outer of map border
-        Vector3 finPlayerPos = playerTf.position;
-        if(finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
-            finPlayerPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + playerBc.size.x / 2;
-        if(finPlayerPos.x + playerBc.size.x / 2 >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
-            finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
-        playerTf.position = finPlayerPos;
-
-        //Make player turn back when changing direction
-        Vector3 finPlayerScale = playerTf.localScale;
-        if(Input.GetAxisRaw("Horizontal") * finPlayerScale.x < 0) finPlayerScale.x *= -1;
-        playerTf.localScale = finPlayerScale;
-
-        //Make player fire the brain wave
-        if (Input.GetButtonDown("Fire")) {
-
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-            Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
-
-            //instantiate bullet
-            GameObject bullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
-            dir.Normalize();
-            //let it go
-            bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
-        }
-
-        if (Input.GetButton("Power"))
+    void FixedUpdate()
+    {
+        if (alive)
         {
-            if(playerType == CharacterType.Shoot)
-                Shoot(playerTf.localScale.x);
-            if(playerType == CharacterType.Pierce)
-                Pierce(playerTf.localScale.x);
-            if(playerType == CharacterType.Accelerate)
+            if (playerType != CharacterType.None)
             {
-                realTimeSpeed = SprintSpeed;
-                Sprint();
+                //Control player to move horizontally
+                Debug.Log(realTimeSpeed);
+                Vector2 playerSpeed = playerRb.velocity;
+                playerSpeed.x = Input.GetAxis("Horizontal") * realTimeSpeed;
+                playerRb.velocity = playerSpeed;
+
+                if (grounded)
+                {
+                    if (Input.GetAxisRaw("Horizontal") != 0 && grounded)
+                    {
+                        this.GetComponent<Animator>().SetBool("isMoving", true);
+                    }
+                    else
+                    {
+                        this.GetComponent<Animator>().SetBool("isMoving", false);
+                    }
+                }
+
+                //Control player to jump
+                if (grounded && Input.GetButton("Jump"))
+                {
+                    grounded = false;
+                    playerRb.AddForce(new Vector2(0, jumpForce));
+                }
             }
-            if (playerType == CharacterType.Flash)
-                Flash(playerTf.localScale.x);
-        }
-        else
-        {
-            if (playerType == CharacterType.Accelerate)
-                realTimeSpeed = moveSpeed;
+
+            //Make player not move outer of map border
+            Vector3 finPlayerPos = playerTf.position;
+            if (finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
+                finPlayerPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + playerBc.size.x / 2;
+            if (finPlayerPos.x + playerBc.size.x / 2 >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
+                finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
+            playerTf.position = finPlayerPos;
+
+            //Make player turn back when changing direction
+            Vector3 finPlayerScale = playerTf.localScale;
+            if (Input.GetAxisRaw("Horizontal") * finPlayerScale.x < 0) finPlayerScale.x *= -1;
+            playerTf.localScale = finPlayerScale;
+
+            //Make player fire the brain wave
+            if (Input.GetButtonDown("Fire"))
+            {
+
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+                Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
+
+                //instantiate bullet
+                GameObject bullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
+                dir.Normalize();
+                //let it go
+                bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+            }
+
+            if (Input.GetButton("Power"))
+            {
+                if (playerType == CharacterType.Shoot)
+                    Shoot(playerTf.localScale.x);
+                if (playerType == CharacterType.Pierce)
+                    Pierce(playerTf.localScale.x);
+                if (playerType == CharacterType.Accelerate)
+                {
+                    realTimeSpeed = SprintSpeed;
+                    Sprint();
+                }
+                if (playerType == CharacterType.Flash)
+                    Flash(playerTf.localScale.x);
+            }
+            else
+            {
+                if (playerType == CharacterType.Accelerate)
+                    realTimeSpeed = moveSpeed;
+            }
         }
     }
 
     void OnCollisionEnter2D(Collision2D collisionObject){
         if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
-            Debug.Log(collisionObject.gameObject.tag);
             alive = false;
         }
         if(collisionObject.gameObject.name == "End")
