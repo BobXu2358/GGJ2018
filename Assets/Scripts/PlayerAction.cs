@@ -67,8 +67,8 @@ public class PlayerAction : MonoBehaviour {
 
     void OnCollisionStay2D(Collision2D collisionObject){
         //Check if the player is on the ground to jump
-        if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
+        //if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
             grounded = true;
-        }
+        //}
     }
 }
