@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour {
     public CharacterType m_Type;             //怪物类型
     public GameObject Prefab_Bullet;     //子弹的预制体
     public float bulletSpeed = 0.3f;     //子弹速度
+    public bool activeAttack = true;    //true为会主动攻击
 
     
     private Enemy _enemy;

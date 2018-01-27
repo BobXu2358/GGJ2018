@@ -29,18 +29,7 @@ public class EnemyChaseState : EnemyBaseState {
 
         ////目标玩家消失在视野里，则继续追踪玩家3s，若仍不可见，则变为puzzle状态
         //if (_enemy.ViewBlocked())
-        //{
-        //    if (tempTime > 0) { tempTime -= Time.deltaTime; }
-        //    else
-        //    {
-        //        _enemy.SetNavTargetPos(_enemy._selfObj.transform);
-        //        _enemy.SetEnemyState(new EnemyPuzzleState(_enemy));
-        //    }
-        //}
-        //else
-        //{
-        //    tempTime = _enemy.time_ChaseToPuzzle;
-        //}
+
 
         if (! _enemy.FoundPlayer())
         {
@@ -64,13 +53,18 @@ public class EnemyChaseState : EnemyBaseState {
         //Debug.Log(forceDir);
         // 移动
         Vector3 moveSpeed = _enemy.speed_run * forceDir * Time.deltaTime;
-        if (forceDir.x < 0.0f)
+        _enemy._selfObj.transform.Translate(moveSpeed);
+        if (forceDir.x < 0.0f)//Left
         {
-            _enemy._selfObj.transform.Translate(moveSpeed);
+            Vector3 scale = _enemy._selfObj.transform.localScale;
+            scale.x = -1f;
+            _enemy._selfObj.transform.localScale = scale;
         }
-        else
+        else //right
         {
-            _enemy._selfObj.transform.Translate(moveSpeed);
+            Vector3 scale = _enemy._selfObj.transform.localScale;
+            scale.x = 1f;
+            _enemy._selfObj.transform.localScale = scale;
         }
 
         // 判定是否转换状态
