@@ -19,11 +19,19 @@ public class PlayerAction : MonoBehaviour {
     public float SprintSpeed;
     public bool success = false;
 
+    private float realTimeSpeed;
+
+    void Start()
+    {
+        realTimeSpeed = moveSpeed;
+    } 
+
     void FixedUpdate() {
         if(playerType != CharacterType.None){
             //Control player to move horizontally
+            Debug.Log(realTimeSpeed);
             Vector2 playerSpeed = playerRb.velocity;
-            playerSpeed.x = Input.GetAxis("Horizontal") * moveSpeed;
+            playerSpeed.x = Input.GetAxis("Horizontal") * realTimeSpeed;
             playerRb.velocity = playerSpeed;
 
             if (grounded)
@@ -38,8 +46,6 @@ public class PlayerAction : MonoBehaviour {
                 }
             }
             
-
-
             //Control player to jump
             if(grounded && Input.GetButton("Jump")){
                 grounded = false;
@@ -61,7 +67,7 @@ public class PlayerAction : MonoBehaviour {
         playerTf.localScale = finPlayerScale;
 
         //Make player fire the brain wave
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire")) {
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
@@ -73,16 +79,24 @@ public class PlayerAction : MonoBehaviour {
             bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButton("Power"))
         {
             if(playerType == CharacterType.Shoot)
-            {
                 Shoot(playerTf.localScale.x);
-            }
             if(playerType == CharacterType.Pierce)
-            {
                 Pierce(playerTf.localScale.x);
+            if(playerType == CharacterType.Accelerate)
+            {
+                realTimeSpeed = SprintSpeed;
+                Sprint();
             }
+            if (playerType == CharacterType.Flash)
+                Flash(playerTf.localScale.x);
+        }
+        else
+        {
+            if (playerType == CharacterType.Accelerate)
+                realTimeSpeed = moveSpeed;
         }
     }
 
@@ -138,4 +152,13 @@ public class PlayerAction : MonoBehaviour {
             bullet0.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
     }
 
+    void Sprint()
+    {
+        realTimeSpeed = SprintSpeed;
+    }
+
+    void Flash(float facing)
+    {
+        realTimeSpeed = SprintSpeed;
+    }
 }

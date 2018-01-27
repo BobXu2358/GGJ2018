@@ -2589,6 +2589,16 @@ Prefab:
       propertyPath: playerType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114772063314558586, guid: c6725ad26d9cb5940a593cdb0faa41f0,
+        type: 2}
+      propertyPath: playerType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114772063314558586, guid: c6725ad26d9cb5940a593cdb0faa41f0,
+        type: 2}
+      propertyPath: SprintSpeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6725ad26d9cb5940a593cdb0faa41f0, type: 2}
   m_IsPrefabParent: 0
