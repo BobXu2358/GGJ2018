@@ -199,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 1741145039946802}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 449567b8682bb074c9da57f39f131a4d, type: 2}
+  m_Controller: {fileID: 9100000, guid: c59f4e7c1f23c7548b34900626b912f0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -254,6 +254,9 @@ MonoBehaviour:
   fireSpeed: 2
   fireOffset: {fileID: 4537070507462928}
   alive: 1
+  MultiShotBullet: {fileID: 0}
+  PiercingBullet: {fileID: 0}
+  SprintSpeed: 0
   success: 0
 --- !u!212 &212380487821715952
 SpriteRenderer:

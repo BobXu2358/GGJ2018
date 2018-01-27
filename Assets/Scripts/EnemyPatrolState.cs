@@ -23,7 +23,7 @@ public class EnemyPatrolState : EnemyBaseState
 
         if (_enemy._Animator != null)
         {
-            //_enemy._Animator.SetTrigger("toPatrol");
+            _enemy._Animator.SetBool("isMoving",true);
         }
     }
 
@@ -41,6 +41,14 @@ public class EnemyPatrolState : EnemyBaseState
         //        _enemy.SetEnemyState(new EnemyAlertState(_enemy));
         //    }
         //}
+
+        if (_enemy._Type == CharacterType.Cast)
+        {
+            if (_enemy.FoundPlayer())
+            {
+                _enemy.SetEnemyState(new EnemyAlertState(_enemy));
+            }
+        }
 
         NavToTartget();
     }

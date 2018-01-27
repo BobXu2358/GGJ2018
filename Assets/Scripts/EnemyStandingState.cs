@@ -14,7 +14,7 @@ public class EnemyStandingState : EnemyBaseState {
 
         if (_enemy._Animator != null)
         {
-            //_enemy._Animator.SetTrigger("toIdle");
+            _enemy._Animator.SetBool("isMoving",false);
         }
     }
 
@@ -32,6 +32,14 @@ public class EnemyStandingState : EnemyBaseState {
         //        _enemy.SetEnemyState(new EnemyAlertState(_enemy));
         //    } 
         //}
+
+        if (_enemy._Type == CharacterType.Cast)
+        {
+            if (_enemy.FoundPlayer())
+            {
+                _enemy.SetEnemyState(new EnemyAlertState(_enemy));
+            }
+        }
 
         if (Condition_SwitchToPatrolState())
         {

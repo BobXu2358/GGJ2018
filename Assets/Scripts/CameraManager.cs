@@ -26,6 +26,7 @@ public class CameraManager : MonoBehaviour {
         if(finCameraPos.y - cameraHalfHeight <= mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y)
             finCameraPos.y = mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y + cameraHalfHeight;
         Vector3 velocity = Vector3.zero;
-        cameraTf.position = Vector3.SmoothDamp(cameraTf.position, finCameraPos, ref velocity, cameraMoveTime);
+        //cameraTf.position = Vector3.SmoothDamp(cameraTf.position, finCameraPos, ref velocity, cameraMoveTime);
+        cameraTf.position = finCameraPos;
     }
 }

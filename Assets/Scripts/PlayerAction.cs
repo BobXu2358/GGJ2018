@@ -32,7 +32,7 @@ public class PlayerAction : MonoBehaviour {
             if (playerType != CharacterType.None)
             {
                 //Control player to move horizontally
-                Debug.Log(realTimeSpeed);
+                //Debug.Log(realTimeSpeed);
                 Vector2 playerSpeed = playerRb.velocity;
                 playerSpeed.x = Input.GetAxis("Horizontal") * realTimeSpeed;
                 playerRb.velocity = playerSpeed;
@@ -83,6 +83,13 @@ public class PlayerAction : MonoBehaviour {
                 //let it go
                 bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
             }
+            /*float fallMultiplier = 2.5f;
+            float lowJumpMultiplier = 2f;
+            if(playerRb.velocity.y < 0){
+                playerRb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }else if(playerRb.velocity.y > 0 && !Input.GetButton("Jump")){
+                playerRb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }*/
 
             if (Input.GetButton("Power"))
             {
@@ -120,6 +127,21 @@ public class PlayerAction : MonoBehaviour {
         if(collisionObject.gameObject.tag == "Obstacle")
             grounded = true;
         //}
+    }
+
+    void PlayJumpSound()
+    {
+        ;
+    }
+
+    void PlayMoveSound()
+    {
+        ;
+    }
+
+    void PlayTransmitSound()
+    {
+        ;
     }
 
     void Shoot(float facing)

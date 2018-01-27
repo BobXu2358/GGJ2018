@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - Obstacle
   - Bullet
-  - GAMEOVER
   layers:
   - Default
   - TransparentFX

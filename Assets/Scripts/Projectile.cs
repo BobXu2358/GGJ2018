@@ -34,6 +34,9 @@ public class Projectile : MonoBehaviour {
             //disable player control script
             player.GetComponent<PlayerAction>().enabled = false;
             player.GetComponent<EnemyAI>().enabled = true;
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            player.GetComponent<Animator>().SetBool("isMoving", false);
+            player.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
 
             //change player tag
             player.tag = "Enemy";
@@ -45,6 +48,11 @@ public class Projectile : MonoBehaviour {
             //change the tag of new player
             col.gameObject.tag = "Player";
 
+            //camera stuff
+            Camera.main.GetComponent<CameraManager>().followingTf = col.gameObject.transform;
+            Camera.main.GetComponent<CameraManager>().followingBc = (CapsuleCollider2D)col;
+
+            GetBaseAttribute(col.gameObject);
             ResetTargetPlayer();
         }
     }
@@ -61,6 +69,16 @@ public class Projectile : MonoBehaviour {
             yield return new WaitForSeconds(0.01f);
         }
         
+    }
+
+    /// <summary>
+    /// EnemyAI内的基本属性赋予给PlayerAction中的属性
+    /// </summary>
+    /// <param name="targetObj"></param>
+    private void GetBaseAttribute(GameObject targetObj)
+    {
+        targetObj.GetComponent<PlayerAction>().playerType = targetObj.GetComponent<EnemyAI>().m_Type;
+        targetObj.GetComponent<PlayerAction>().moveSpeed = targetObj.GetComponent<EnemyAI>().SpeedRun;
     }
 
     /// <summary>

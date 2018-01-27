@@ -10,7 +10,6 @@ public class EnemyAttackState : EnemyBaseState
     public EnemyAttackState(Enemy enemy)
     {
         _enemy = enemy;
-
     }
 
     public void Update()

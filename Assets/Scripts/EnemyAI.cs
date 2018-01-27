@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour {
     public float DistanceFind = 10.0f;   //发现玩家的距离
     public float SpeedRun = 2.0f;        //移动速度
     public float AttackInterval = 2.0f;  //发射子弹的间隔
-    CharacterType m_Type;             //怪物类型
+    [HideInInspector] public CharacterType m_Type;             //怪物类型
     public GameObject Prefab_Bullet;     //子弹的预制体
     public float bulletSpeed = 0.3f;     //子弹速度
     public bool activeAttack = true;    //true为会主动攻击
@@ -98,6 +98,7 @@ public class EnemyAI : MonoBehaviour {
         if (_enemy.trigger_Shoot)
         {
             Vector2 dir = Player.transform.position - this.transform.position;
+            dir.Normalize();
 
             GameObject bullet = Instantiate(Prefab_Bullet, this.transform.position, this.transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;

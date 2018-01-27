@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 502af21a54a6ee244b6fd15652bd5dba
-timeCreated: 1517042899
+timeCreated: 1517069712
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -102,7 +102,7 @@ TextureImporter:
         width: 14
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
+      pivot: {x: 0.5714286, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -116,7 +116,7 @@ TextureImporter:
         width: 14
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
+      pivot: {x: 0.5714286, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -127,10 +127,10 @@ TextureImporter:
         serializedVersion: 2
         x: 42
         y: 0
-        width: 14
+        width: 13
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
+      pivot: {x: 0.61538464, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +139,12 @@ TextureImporter:
       name: atlas_4
       rect:
         serializedVersion: 2
-        x: 56
+        x: 55
         y: 0
-        width: 14
+        width: 13
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
+      pivot: {x: 0.61538464, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: atlas_5
       rect:
         serializedVersion: 2
-        x: 70
+        x: 68
         y: 0
         width: 14
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
+      pivot: {x: 0.5714286, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,54 +167,12 @@ TextureImporter:
       name: atlas_6
       rect:
         serializedVersion: 2
-        x: 84
+        x: 82
         y: 0
         width: 14
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: atlas_7
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 0
-        width: 14
-        height: 37
-      alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: atlas_8
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 14
-        height: 36
-      alignment: 9
-      pivot: {x: 0.6428572, y: 0.5555556}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: atlas_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 37
-        width: 14
-        height: 36
-      alignment: 9
-      pivot: {x: 0.6428572, y: 0.5555556}
+      pivot: {x: 0.5714286, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
