@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 70873119046438386}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,8 +175,10 @@ MonoBehaviour:
   playerTf: {fileID: 4477364490744560}
   playerBc: {fileID: 70873119046438386}
   playerRb: {fileID: 50215093672082232}
-  mapGroundTf: {fileID: 0}
-  mapGroundBc: {fileID: 0}
+  mapGroundTf: {fileID: 4771648904615078, guid: 250cf942987eda047a144049c3cd3c6a,
+    type: 2}
+  mapGroundBc: {fileID: 61580673583736854, guid: 250cf942987eda047a144049c3cd3c6a,
+    type: 2}
   moveSpeed: 3
   jumpForce: 150
   Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
