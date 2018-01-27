@@ -15,9 +15,10 @@ public class EnemyAI : MonoBehaviour {
     public float DistanceFind = 10.0f;   //发现玩家的距离
     public float SpeedRun = 2.0f;        //移动速度
     public float AttackInterval = 2.0f;  //发射子弹的间隔
-    public CharacterType m_Type;             //怪物类型
+    CharacterType m_Type;             //怪物类型
     public GameObject Prefab_Bullet;     //子弹的预制体
     public float bulletSpeed = 0.3f;     //子弹速度
+    public bool activeAttack = true;    //true为会主动攻击
 
     
     private Enemy _enemy;
@@ -29,6 +30,8 @@ public class EnemyAI : MonoBehaviour {
     //public float TimeChaseExtend;         //视野遮挡后，继续沿着原路走的时间
     // Use this for initialization
     void Awake () {
+        m_Type = GetComponent<PlayerAction>().playerType;
+        
         _enemy = new Enemy();
 
         PatrolTarget = transform.Find("PatrolTarget");

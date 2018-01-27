@@ -34,13 +34,13 @@ public class EnemyPatrolState : EnemyBaseState
 
     public void HandleInput()
     {
-        if (_enemy.FoundPlayer())
-        {
-            if (_enemy._Type != CharacterType.Flash)
-            {
-                _enemy.SetEnemyState(new EnemyAlertState(_enemy));
-            }
-        }
+        //if (_enemy.FoundPlayer())
+        //{
+        //    if (_enemy._Type != CharacterType.Flash)
+        //    {
+        //        _enemy.SetEnemyState(new EnemyAlertState(_enemy));
+        //    }
+        //}
 
         NavToTartget();
     }
@@ -66,10 +66,18 @@ public class EnemyPatrolState : EnemyBaseState
             }
             else
             {
-                _enemy._selfObj.GetComponent<Rigidbody2D>().AddForce(forceDir * 1.0f);
+                //_enemy._selfObj.GetComponent<Rigidbody2D>().AddForce(forceDir * 1.0f);
                 Vector3 moveSpeed = _enemy.speed_run * Vector3.left * Time.deltaTime;
-                if (isToLeft) { _enemy._selfObj.transform.Translate(moveSpeed); }
-                else { _enemy._selfObj.transform.Translate(-moveSpeed); }
+                if (isToLeft)
+                {
+                    _enemy._selfObj.transform.Translate(moveSpeed);
+                    _enemy._selfObj.transform.localScale = new Vector3(-1.0f,_enemy._selfObj.transform.localScale.y,_enemy._selfObj.transform.localScale.z);
+                }
+                else
+                {
+                    _enemy._selfObj.transform.Translate(-moveSpeed);
+                    _enemy._selfObj.transform.localScale = new Vector3(1.0f, _enemy._selfObj.transform.localScale.y, _enemy._selfObj.transform.localScale.z);
+                }
             }
         }
         else if (_enemy._Type == CharacterType.Flash)
