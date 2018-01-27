@@ -28,12 +28,14 @@ public class Projectile : MonoBehaviour {
 
             //disable player control script
             player.GetComponent<PlayerAction>().enabled = false;
+            player.GetComponent<EnemyAI>().enabled = true;
 
             //change player tag
             player.tag = "Enemy";
 
             //enable target's player control script
             col.gameObject.GetComponent<PlayerAction>().enabled = true;
+            col.gameObject.GetComponent<EnemyAI>().enabled = false;
 
             //change the tag of new player
             col.gameObject.tag = "Player";

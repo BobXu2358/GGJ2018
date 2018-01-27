@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour {
     public Transform mapGroundTf;
     public BoxCollider2D mapGroundBc;
     public Camera mainCam;
-    public Vector3 cameraOffset;
+    public Vector3 cameraOffset = new Vector3(0, 0, -10);
     float cameraHalfWidth;
     float cameraHalfHeight;
 

@@ -25,13 +25,13 @@ public class EnemyStandingState : EnemyBaseState {
 
     public void HandleInput()
     {
-        if (_enemy.FoundPlayer())
-        {
-            if (_enemy._Type != CharacterType.Flash)
-            {
-                _enemy.SetEnemyState(new EnemyAlertState(_enemy));
-            } 
-        }
+        //if (_enemy.FoundPlayer())
+        //{
+        //    if (_enemy._Type != CharacterType.Flash)
+        //    {
+        //        _enemy.SetEnemyState(new EnemyAlertState(_enemy));
+        //    } 
+        //}
 
         if (Condition_SwitchToPatrolState())
         {
