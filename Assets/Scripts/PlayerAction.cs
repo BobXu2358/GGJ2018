@@ -13,7 +13,7 @@ public class PlayerAction : MonoBehaviour {
 
     void FixedUpdate(){
         Vector3 moveOffset = new Vector3(0, 0, 0);
-        moveOffset.x += Input.GetAxisRaw("Horizontal") * moveSpeed;
+        moveOffset.x += Input.GetAxis("Horizontal") * moveSpeed;
         Vector3 finPlayerPos = playerTf.position + moveOffset;
 
         if(finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
@@ -29,10 +29,6 @@ public class PlayerAction : MonoBehaviour {
         if(grounded && Input.GetButton("Jump")){
             grounded = false;
             playerRb.AddForce(new Vector2(0, jumpForce));
-        }
-
-        if(Input.GetButtonDown("Fire1")){
-
         }
     }
 

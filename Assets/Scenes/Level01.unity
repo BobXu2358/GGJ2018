@@ -548,7 +548,7 @@ MonoBehaviour:
   playerRb: {fileID: 1541399631}
   mapGroundTf: {fileID: 1737763574}
   mapGroundBc: {fileID: 1737763575}
-  moveSpeed: 0.1
+  moveSpeed: 0.12
   jumpForce: 150
 --- !u!1 &1737763572
 GameObject:
