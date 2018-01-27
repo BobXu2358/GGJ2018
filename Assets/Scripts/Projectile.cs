@@ -24,16 +24,18 @@ public class Projectile : MonoBehaviour {
         if (col.gameObject.tag == "Enemy")
         {
             //destory the bullet
-            Destroy(col.gameObject);
+            Destroy(gameObject);
 
             //disable player control script
             player.GetComponent<PlayerAction>().enabled = false;
+            player.GetComponent<Fire>().enabled = false;
 
             //change player tag
             player.tag = "Enemy";
 
             //enable target's player control script
             col.gameObject.GetComponent<PlayerAction>().enabled = true;
+            col.gameObject.GetComponent<Fire>().enabled = true;
 
             //change the tag of new player
             col.gameObject.tag = "Player";
