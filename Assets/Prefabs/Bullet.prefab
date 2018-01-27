@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletLifeTime: 2
+  camera: {fileID: 1349691649474420, guid: 87ef260f034b3514f99fede94319ec19, type: 2}
 --- !u!212 &212049442447767870
 SpriteRenderer:
   m_ObjectHideFlags: 1
