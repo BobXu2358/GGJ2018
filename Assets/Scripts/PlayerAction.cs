@@ -17,12 +17,22 @@ public class PlayerAction : MonoBehaviour {
     public GameObject MultiShotBullet;
     public GameObject PiercingBullet;
     public float SprintSpeed;
+    public float flashDistance;
     public bool success = false;
+
     private float realTimeSpeed;
+    private GameObject mindBullet;
+    private Animator anim;
+
+    private float FadeTime = 0.3f;
+    private float ShowTime = 0.3f;
+    private Color tempColor = Color.white;
+    private float alphaChange = Time.deltaTime / 0.3f;
 
     void Start()
     {
         realTimeSpeed = moveSpeed;
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -71,17 +81,17 @@ public class PlayerAction : MonoBehaviour {
             playerTf.localScale = finPlayerScale;
 
             //Make player fire the brain wave
-            if (Input.GetButtonDown("Fire"))
+            if (Input.GetButtonDown("Fire") && mindBullet == null)
             {
 
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
                 Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
 
                 //instantiate bullet
-                GameObject bullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
+                mindBullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
                 dir.Normalize();
                 //let it go
-                bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+                mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
             }
             /*float fallMultiplier = 2.5f;
             float lowJumpMultiplier = 2f;
@@ -91,7 +101,22 @@ public class PlayerAction : MonoBehaviour {
                 playerRb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }*/
 
-            if (Input.GetButton("Power"))
+            if (playerType == CharacterType.Accelerate)
+            {
+                if (Input.GetButton("Power"))
+                {
+                    realTimeSpeed = SprintSpeed;
+                    Sprint();
+                }
+                else
+                {
+                    realTimeSpeed = moveSpeed;
+                    anim.SetTrigger("exit");
+                }
+
+            }
+
+            else if (Input.GetButtonDown("Power"))
             {
                 if (playerType == CharacterType.Shoot)
                     Shoot(playerTf.localScale.x);
@@ -104,11 +129,6 @@ public class PlayerAction : MonoBehaviour {
                 }
                 if (playerType == CharacterType.Flash)
                     Flash(playerTf.localScale.x);
-            }
-            else
-            {
-                if (playerType == CharacterType.Accelerate)
-                    realTimeSpeed = moveSpeed;
             }
         }
     }
@@ -146,6 +166,8 @@ public class PlayerAction : MonoBehaviour {
 
     void Shoot(float facing)
     {
+        Debug.Log("shooting");
+        anim.SetBool("shoot", true);
         //let it go
         GameObject bullet0 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
         GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
@@ -163,6 +185,10 @@ public class PlayerAction : MonoBehaviour {
 
         if (facing == -1)
         {
+            bullet0.GetComponent<SpriteRenderer>().flipX = true;
+            bullet1.GetComponent<SpriteRenderer>().flipX = true;
+            bullet2.GetComponent<SpriteRenderer>().flipX = true;
+
             bullet0.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
             bullet1.GetComponent<Rigidbody2D>().velocity = -dir1 * fireSpeed;
             bullet2.GetComponent<Rigidbody2D>().velocity = -dir2 * fireSpeed;
@@ -171,21 +197,50 @@ public class PlayerAction : MonoBehaviour {
 
     void Pierce(float facing)
     {
-        GameObject bullet0 = Instantiate(PiercingBullet, fireOffset.position, fireOffset.rotation);
+        anim.SetTrigger("shoot");
+        GameObject bullet = Instantiate(PiercingBullet, fireOffset.position, fireOffset.rotation);
         //let it go
         if (facing == 1)
-            bullet0.GetComponent<Rigidbody2D>().velocity = transform.right * fireSpeed;
+            bullet.GetComponent<Rigidbody2D>().velocity = transform.right * fireSpeed;
         if (facing == -1)
-            bullet0.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
+        {
+            bullet.GetComponent<SpriteRenderer>().flipX = true;
+            bullet.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
+        }
+            
     }
 
     void Sprint()
     {
+        anim.SetTrigger("start");
         realTimeSpeed = SprintSpeed;
     }
 
     void Flash(float facing)
     {
-        realTimeSpeed = SprintSpeed;
+
+        anim.SetTrigger("flash");
+
+        float x = transform.position.x;
+
+
+        if (facing == 1)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward);
+            if(hit.collider!= null && hit.distance > flashDistance) 
+                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+            else
+                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+        }
+
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.forward);
+            if (hit.collider != null && hit.distance > flashDistance)
+                transform.position = new Vector3(x - flashDistance, transform.position.y, transform.position.z);
+            else
+                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+        }
+
     }
 }

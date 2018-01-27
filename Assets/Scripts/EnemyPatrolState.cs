@@ -66,7 +66,7 @@ public class EnemyPatrolState : EnemyBaseState
             Vector2 forceDir = tartgetPos - _enemy._selfObj.transform.position;
             forceDir.y = 0.0f;
 
-
+            // 是否抵达目标点
             if (forceDir.magnitude < 0.05f)
             {
                 _enemy._selfObj.transform.position = tartgetPos;
@@ -75,17 +75,22 @@ public class EnemyPatrolState : EnemyBaseState
             else
             {
                 //_enemy._selfObj.GetComponent<Rigidbody2D>().AddForce(forceDir * 1.0f);
+                Vector3 nextPos = tartgetPos;
                 Vector3 moveSpeed = _enemy.speed_run * Vector3.left * Time.deltaTime;
                 if (isToLeft)
                 {
                     _enemy._selfObj.transform.Translate(moveSpeed);
                     _enemy._selfObj.transform.localScale = new Vector3(-1.0f,_enemy._selfObj.transform.localScale.y,_enemy._selfObj.transform.localScale.z);
+                    nextPos = _enemy._selfObj.transform.position + 10.0f * moveSpeed;
                 }
                 else
                 {
                     _enemy._selfObj.transform.Translate(-moveSpeed);
                     _enemy._selfObj.transform.localScale = new Vector3(1.0f, _enemy._selfObj.transform.localScale.y, _enemy._selfObj.transform.localScale.z);
+                    nextPos = _enemy._selfObj.transform.position - 10.0f * moveSpeed;
                 }
+                
+                CheckCliff(nextPos);
             }
         }
         else if (_enemy._Type == CharacterType.Flash)
@@ -116,7 +121,7 @@ public class EnemyPatrolState : EnemyBaseState
                 
             }
 
-            tartgetPos.y = _enemy._selfObj.transform.position.y;
+            //tartgetPos.y = _enemy._selfObj.transform.position.y;
             if (tartgetPos.x > _enemy._selfObj.transform.position.x)
             { isToLeft = false;}
             else
@@ -145,6 +150,7 @@ public class EnemyPatrolState : EnemyBaseState
         else
         {
             _enemy._selfObj.transform.position = tartgetPos;
+            Debug.Log(_enemy.initPos);
 
             if (ShowTime > 0)
             {
@@ -158,6 +164,18 @@ public class EnemyPatrolState : EnemyBaseState
                 _enemy._selfObj.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
                 _enemy.SetEnemyState(new EnemyStandingState(_enemy));
             }
+        }
+    }
+
+    /// <summary>
+    /// 判定下一步路是不是悬崖，如果是，则寻路目标点重新设置为当前位置
+    /// </summary>
+    private void CheckCliff(Vector3 nextPos)
+    {
+        RaycastHit2D hitt = Physics2D.Raycast(nextPos, Vector2.down, 10.0f);
+        if (hitt.transform == null)
+        {
+            tartgetPos = _enemy._selfObj.transform.position;
         }
     }
 }

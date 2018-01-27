@@ -71,6 +71,7 @@ public class EnemyAI : MonoBehaviour {
             if ((this.transform.localScale.x > 0.0f && Cp.point.x < _enemy.PatrolTargetPos.x) || (this.transform.localScale.x < 0.0f && Cp.point.x > _enemy.PatrolTargetPos.x))
             {
                 _enemy.PatrolTargetPos = 2.0f * this.transform.position - _enemy.PatrolTargetPos;
+                _enemy.PatrolTargetPos.y = this.transform.position.y;
                 _enemy.SetEnemyState(new EnemyStandingState(_enemy));
             }
         }
@@ -100,6 +101,7 @@ public class EnemyAI : MonoBehaviour {
             Vector2 dir = Player.transform.position - this.transform.position;
             dir.Normalize();
 
+            m_Animator.SetTrigger("shoot");
             GameObject bullet = Instantiate(Prefab_Bullet, this.transform.position, this.transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;
 

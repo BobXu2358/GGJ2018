@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4598201564748228
 Transform:
   m_ObjectHideFlags: 1
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1714025532640140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.23, y: 0.41, z: 0}
+  m_LocalPosition: {x: -4.635763, y: -0.912392, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4598201564748228}
@@ -103,7 +103,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1714025532640140}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 440916dc463df0e43a3c07e50a08b63b, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -225,6 +225,7 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
+  m_Type: 0
   Prefab_Bullet: {fileID: 1337430138003654, guid: e8f56789a08a9ea47a18065a840f6072,
     type: 2}
   bulletSpeed: 0.3
@@ -250,11 +251,12 @@ MonoBehaviour:
   mapGroundBc: {fileID: 0}
   moveSpeed: 3
   jumpForce: 150
-  Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
+  Projectile: {fileID: 1644644534857110, guid: 0c3478ddf1d7ee64c81ab242babb42c6, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4617583409088556}
   alive: 1
-  MultiShotBullet: {fileID: 0}
+  MultiShotBullet: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e,
+    type: 2}
   PiercingBullet: {fileID: 0}
   SprintSpeed: 0
   success: 0
@@ -292,7 +294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 502af21a54a6ee244b6fd15652bd5dba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2955f94ee3654f1f959135d01e23ee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
