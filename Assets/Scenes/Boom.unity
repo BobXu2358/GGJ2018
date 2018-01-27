@@ -771,7 +771,7 @@ MonoBehaviour:
   moveSpeed: 3
   jumpForce: 150
   Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
-  fireSpeed: 0
+  fireSpeed: 3
   fireOffset: {fileID: 1541399629}
 --- !u!1 &1737763572
 GameObject:
