@@ -93,6 +93,9 @@ public class Enemy {
     {
         bool found = false;
 
+        if(_Type == CharacterType.None || _Type == CharacterType.Human)
+            return false;
+
         Vector3 offset = Player.transform.position - _selfObj.transform.position;
         float dis = offset.magnitude;
         if (dis <= dis_Find)

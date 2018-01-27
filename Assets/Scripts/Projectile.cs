@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour {
 
             //camera stuff
             Camera.main.GetComponent<CameraManager>().followingTf = col.gameObject.transform;
-            Camera.main.GetComponent<CameraManager>().followingBc = (BoxCollider2D)col;
+            Camera.main.GetComponent<CameraManager>().followingBc = (CapsuleCollider2D)col;
 
             ResetTargetPlayer();
         }
@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour {
         GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject em in enemyList)
         {
-            //em.GetComponent<EnemyAI>().SetPlayer();
+            em.GetComponent<EnemyAI>().SetPlayer();
         }
     }
 }

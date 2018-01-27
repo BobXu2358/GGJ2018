@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerAction : MonoBehaviour {
     public CharacterType playerType;
     public Transform playerTf;
-    public BoxCollider2D playerBc;
+    public CapsuleCollider2D playerBc;
     public Rigidbody2D playerRb;
     public Transform mapGroundTf;
     public BoxCollider2D mapGroundBc;
@@ -14,6 +13,7 @@ public class PlayerAction : MonoBehaviour {
     public float fireSpeed;
     public Transform fireOffset;
     bool grounded = true;
+    public bool alive = true;
 
     void FixedUpdate(){
         if(playerType != CharacterType.None){
@@ -39,7 +39,7 @@ public class PlayerAction : MonoBehaviour {
 
         //Make level restart when player fall down and die
         if(playerTf.position.y - playerBc.size.y / 2 <= mapGroundTf.position.y + mapGroundBc.size.y / 2)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            alive = false;
 
         //Make player turn back when changing direction
         Vector3 finPlayerScale = playerTf.localScale;
@@ -60,8 +60,12 @@ public class PlayerAction : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collisionObject){
+        if(collisionObject.gameObject.tag == "Enemy")
+            alive = false;
+    }
+
     void OnCollisionStay2D(Collision2D collisionObject){
-        Debug.Log(collisionObject.gameObject.name);
         //Check if the player is on the ground to jump
         if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
             grounded = true;

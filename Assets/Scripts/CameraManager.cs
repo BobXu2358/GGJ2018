@@ -2,7 +2,7 @@
 
 public class CameraManager : MonoBehaviour {
     public Transform followingTf;
-    public BoxCollider2D followingBc;
+    public CapsuleCollider2D followingBc;
     public Transform cameraTf;
     public Transform mapGroundTf;
     public BoxCollider2D mapGroundBc;

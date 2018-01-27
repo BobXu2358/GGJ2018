@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour {
     void Awake () {
         _enemy = new Enemy();
 
-        PatrolTarget = transform.Find("PatrolTartget");
+        PatrolTarget = transform.Find("PatrolTarget");
         _enemy._Type = m_Type;
         _enemy.PatrolTargetPos = PatrolTarget.position;
         _enemy.initPos = this.transform.position;

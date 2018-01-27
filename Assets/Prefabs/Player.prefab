@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4477364490744560}
   - component: {fileID: 212314854625468138}
-  - component: {fileID: 61247454977032540}
   - component: {fileID: 50215093672082232}
   - component: {fileID: 114795970240185034}
   - component: {fileID: 114822755618167068}
   - component: {fileID: 82114570181563814}
+  - component: {fileID: 70873119046438386}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -65,8 +65,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61247454977032540
-BoxCollider2D:
+--- !u!70 &70873119046438386
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -78,18 +78,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.041666687, y: -0.03125003}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6428572, y: 0.5405406}
-    oldSize: {x: 0.29166666, y: 0.7708333}
-    newSize: {x: 0.29166666, y: 0.7708333}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.29166666, y: 0.7708333}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!82 &82114570181563814
 AudioSource:
   m_ObjectHideFlags: 1
@@ -183,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerType: 1
   playerTf: {fileID: 4477364490744560}
-  playerBc: {fileID: 61247454977032540}
+  playerBc: {fileID: 70873119046438386}
   playerRb: {fileID: 50215093672082232}
   mapGroundTf: {fileID: 0}
   mapGroundBc: {fileID: 0}
@@ -192,6 +182,7 @@ MonoBehaviour:
   Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4477364490744560}
+  alive: 1
 --- !u!114 &114822755618167068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,7 +201,7 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
-  m_Type: 0
+  m_Type: 1
   Prefab_Bullet: {fileID: 0}
   bulletSpeed: 0.3
   m_AudioSource: {fileID: 0}

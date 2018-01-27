@@ -53,7 +53,7 @@ public class EnemyChaseState : EnemyBaseState {
     /// </summary>
     public void ChaseTarget()
     {
-        Debug.Log("Chase");
+        //Debug.Log("Chase");
         Vector2 forceDir = _enemy.Player.transform.position - _enemy._selfObj.transform.position;
         if (_enemy._Type != CharacterType.Fly)
         {
@@ -61,7 +61,7 @@ public class EnemyChaseState : EnemyBaseState {
         }
 
         forceDir.Normalize();
-        Debug.Log(forceDir);
+        //Debug.Log(forceDir);
         // 移动
         Vector3 moveSpeed = _enemy.speed_run * forceDir * Time.deltaTime;
         if (forceDir.x < 0.0f)
