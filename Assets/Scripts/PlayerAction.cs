@@ -22,6 +22,20 @@ public class PlayerAction : MonoBehaviour {
             playerSpeed.x = Input.GetAxis("Horizontal") * moveSpeed;
             playerRb.velocity = playerSpeed;
 
+            if (grounded)
+            {
+                if (playerRb.velocity.magnitude >= 0.1f)
+                {
+                    this.GetComponent<Animator>().SetBool("isMoving",true);
+                }
+                else
+                {
+                    this.GetComponent<Animator>().SetBool("isMoving", false);
+                }
+            }
+            
+
+
             //Control player to jump
             if(grounded && Input.GetButton("Jump")){
                 grounded = false;

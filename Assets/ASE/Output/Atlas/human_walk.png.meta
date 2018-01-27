@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e5d1fd52b1a201043afecb1ec8c2abe0
-timeCreated: 1517023851
+guid: a5360069bc28b2545be90b726d0ca5b9
+timeCreated: 1517041356
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,7 +10,6 @@ TextureImporter:
     21300006: atlas_3
     21300008: atlas_4
     21300010: atlas_5
-    21300012: atlas_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -85,7 +84,7 @@ TextureImporter:
         width: 14
         height: 37
       alignment: 9
-      pivot: {x: 0.6428572, y: 0.5405406}
+      pivot: {x: 0.5714286, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -110,10 +109,10 @@ TextureImporter:
         serializedVersion: 2
         x: 28
         y: 0
-        width: 14
-        height: 37
+        width: 13
+        height: 36
       alignment: 9
-      pivot: {x: 0.5714286, y: 0.5405406}
+      pivot: {x: 0.61538464, y: 0.5555556}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -122,12 +121,12 @@ TextureImporter:
       name: atlas_3
       rect:
         serializedVersion: 2
-        x: 42
+        x: 41
         y: 0
         width: 13
-        height: 37
+        height: 36
       alignment: 9
-      pivot: {x: 0.61538464, y: 0.5405406}
+      pivot: {x: 0.61538464, y: 0.5555556}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -136,12 +135,12 @@ TextureImporter:
       name: atlas_4
       rect:
         serializedVersion: 2
-        x: 55
+        x: 54
         y: 0
-        width: 13
+        width: 14
         height: 37
       alignment: 9
-      pivot: {x: 0.61538464, y: 0.5405406}
+      pivot: {x: 0.5714286, y: 0.5405406}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -151,20 +150,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 68
-        y: 0
-        width: 14
-        height: 37
-      alignment: 9
-      pivot: {x: 0.5714286, y: 0.5405406}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: atlas_6
-      rect:
-        serializedVersion: 2
-        x: 82
         y: 0
         width: 14
         height: 37
