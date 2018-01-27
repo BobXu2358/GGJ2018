@@ -24,15 +24,11 @@ public class Projectile : MonoBehaviour {
         if (col.gameObject.tag == "Enemy")
         {
 
-            GameObject enemy = col.gameObject;
-
             //destory the bullet
             Destroy(gameObject);
 
             //disable player control script
             player.GetComponent<PlayerAction>().enabled = false;
-            player.GetComponent<MainController>().enabled = false;
-            player.GetComponent<Fire>().enabled = false;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
             //change player tag
@@ -40,15 +36,12 @@ public class Projectile : MonoBehaviour {
 
             //enable target's player control script
 
-            enemy.GetComponent<PlayerAction>().enabled = true;
-            enemy.GetComponent<Fire>().enabled = true;
-            enemy.GetComponent<MainController>().enabled = true;
-
+            col.gameObject.GetComponent<PlayerAction>().enabled = true;
             //change the tag of new player
-            enemy.tag = "Player";
+            col.gameObject.tag = "Player";
 
             //camera stuff
-            Camera.main.GetComponent<CameraManager>().followingTf = enemy.transform;
+            Camera.main.GetComponent<CameraManager>().followingTf = col.gameObject.transform;
             Camera.main.GetComponent<CameraManager>().followingBc = (BoxCollider2D) col;
         }
     }
