@@ -17,6 +17,7 @@ public class PlayerAction : MonoBehaviour {
     [HideInInspector] public bool success = false;
 
     void FixedUpdate(){
+        if(alive){
         if(playerType != CharacterType.None){
             //Control player to move horizontally
             Vector2 playerSpeed = playerRb.velocity;
@@ -25,7 +26,7 @@ public class PlayerAction : MonoBehaviour {
 
             if (grounded)
             {
-                if (playerRb.velocity.magnitude >= 0.1f)
+                if (Input.GetAxisRaw("Horizontal") != 0 && grounded)
                 {
                     this.GetComponent<Animator>().SetBool("isMoving",true);
                 }
@@ -67,6 +68,7 @@ public class PlayerAction : MonoBehaviour {
             dir.Normalize();
             //let it go
             bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+        }
         }
     }
 

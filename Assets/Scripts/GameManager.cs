@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour {
     void Update(){
         GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
         if(!player.GetComponent<PlayerAction>().alive){
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerAction>().enabled = false;
+            player.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0f, 0f);
             gameOverCanvas.SetActive(true);
+            Time.timeScale = 0;
         }
 
         if(Input.GetButton("Restart")){
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
