@@ -2434,6 +2434,22 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114822755618167068, guid: f4dc375bf4073e9429bbd2cd7f76a653,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114795970240185034, guid: f4dc375bf4073e9429bbd2cd7f76a653,
+        type: 2}
+      propertyPath: MultiShotBullet
+      value: 
+      objectReference: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e,
+        type: 2}
+    - target: {fileID: 114795970240185034, guid: f4dc375bf4073e9429bbd2cd7f76a653,
+        type: 2}
+      propertyPath: playerType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4dc375bf4073e9429bbd2cd7f76a653, type: 2}
   m_IsPrefabParent: 0

@@ -14,8 +14,11 @@ public class PlayerAction : MonoBehaviour {
     public Transform fireOffset;
     bool grounded = true;
     public bool alive = true;
+    public GameObject MultiShotBullet;
+    public GameObject PiercingBullet;
+    public float SprintSpeed;
 
-    void FixedUpdate(){
+    void FixedUpdate() {
         if(playerType != CharacterType.None){
             //Control player to move horizontally
             Vector2 playerSpeed = playerRb.velocity;
@@ -48,7 +51,7 @@ public class PlayerAction : MonoBehaviour {
         playerTf.localScale = finPlayerScale;
 
         //Make player fire the brain wave
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire1")) {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
 
@@ -57,6 +60,18 @@ public class PlayerAction : MonoBehaviour {
             dir.Normalize();
             //let it go
             bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if(playerType == CharacterType.Shoot)
+            {
+                Shoot(playerTf.localScale.x);
+            }
+            if(playerType == CharacterType.Pierce)
+            {
+                Pierce(playerTf.localScale.x);
+            }
         }
     }
 
@@ -71,4 +86,41 @@ public class PlayerAction : MonoBehaviour {
             grounded = true;
         //}
     }
+
+    void Shoot(float facing)
+    {
+        //let it go
+        GameObject bullet0 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
+        GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
+        GameObject bullet2 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
+
+        Vector2 dir1 = Quaternion.Euler(0, 0, 45) * Vector2.right;
+        Vector2 dir2 = Quaternion.Euler(0, 0, -45) * Vector2.right;
+        //let it go
+        if (facing == 1)
+        {
+            bullet0.GetComponent<Rigidbody2D>().velocity = transform.right * fireSpeed;
+            bullet1.GetComponent<Rigidbody2D>().velocity = dir1 * fireSpeed;
+            bullet2.GetComponent<Rigidbody2D>().velocity = dir2 * fireSpeed;
+        }
+
+        if (facing == -1)
+        {
+            bullet0.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
+            bullet1.GetComponent<Rigidbody2D>().velocity = -dir1 * fireSpeed;
+            bullet2.GetComponent<Rigidbody2D>().velocity = -dir2 * fireSpeed;
+        }
+    }
+
+    void Pierce(float facing)
+    {
+        GameObject bullet0 = Instantiate(PiercingBullet, fireOffset.position, fireOffset.rotation);
+        //let it go
+        if (facing == 1)
+            bullet0.GetComponent<Rigidbody2D>().velocity = transform.right * fireSpeed;
+        if (facing == -1)
+            bullet0.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
+    }
+
+    void Sprint
 }
