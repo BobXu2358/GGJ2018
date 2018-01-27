@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114255813271562832}
   - component: {fileID: 82644972388463238}
   - component: {fileID: 70644042705453708}
+  - component: {fileID: 95081999565102570}
   m_Layer: 0
   m_Name: Shoot
   m_TagString: Enemy
@@ -189,6 +190,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95081999565102570
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714025532640140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b66b3d1c1afb564787d0f4e25a654eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114255813271562832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,10 +225,10 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
-  m_Type: 4
   Prefab_Bullet: {fileID: 1337430138003654, guid: e8f56789a08a9ea47a18065a840f6072,
     type: 2}
   bulletSpeed: 0.3
+  activeAttack: 1
   m_AudioSource: {fileID: 0}
   m_Animator: {fileID: 0}
 --- !u!114 &114684619268365690
@@ -224,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138cd93b0e25eed4cbc3c6adac57b369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 2
+  playerType: 4
   playerTf: {fileID: 4617583409088556}
   playerBc: {fileID: 70644042705453708}
   playerRb: {fileID: 50522720549585412}
@@ -236,6 +254,7 @@ MonoBehaviour:
   fireSpeed: 2
   fireOffset: {fileID: 4617583409088556}
   alive: 1
+  success: 0
 --- !u!212 &212290384408780644
 SpriteRenderer:
   m_ObjectHideFlags: 1

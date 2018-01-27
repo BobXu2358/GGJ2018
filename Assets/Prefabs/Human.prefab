@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114512026134251806}
   - component: {fileID: 82495991851272780}
   - component: {fileID: 70102830067892148}
+  - component: {fileID: 95430422766123362}
   m_Layer: 0
   m_Name: Human
   m_TagString: Player
@@ -102,7 +103,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1508367656035878}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 440916dc463df0e43a3c07e50a08b63b, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -189,6 +190,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95430422766123362
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508367656035878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 449567b8682bb074c9da57f39f131a4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114512026134251806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,9 +225,9 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
-  m_Type: 1
   Prefab_Bullet: {fileID: 0}
   bulletSpeed: 0.3
+  activeAttack: 1
   m_AudioSource: {fileID: 0}
   m_Animator: {fileID: 0}
 --- !u!114 &114772063314558586
@@ -235,6 +253,7 @@ MonoBehaviour:
   fireSpeed: 2
   fireOffset: {fileID: 4448407884916590}
   alive: 1
+  success: 0
 --- !u!212 &212970562463381398
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,7 +13,8 @@ public class PlayerAction : MonoBehaviour {
     public float fireSpeed;
     public Transform fireOffset;
     bool grounded = true;
-    public bool alive = true;
+    [HideInInspector] public bool alive = true;
+    [HideInInspector] public bool success = false;
 
     void FixedUpdate(){
         if(playerType != CharacterType.None){
@@ -51,23 +52,18 @@ public class PlayerAction : MonoBehaviour {
             finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
         playerTf.position = finPlayerPos;
 
-        //Make level restart when player fall down and die
-        if(playerTf.position.y - playerBc.size.y / 2 <= mapGroundTf.position.y + mapGroundBc.size.y / 2)
-            alive = false;
-
         //Make player turn back when changing direction
         Vector3 finPlayerScale = playerTf.localScale;
-        if(Input.GetAxisRaw("Horizontal") == 1) finPlayerScale.x = 1;
-        if(Input.GetAxisRaw("Horizontal") == -1) finPlayerScale.x = -1;
+        if(Input.GetAxisRaw("Horizontal") * finPlayerScale.x < 0) finPlayerScale.x *= -1;
         playerTf.localScale = finPlayerScale;
 
         //Make player fire the brain wave
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire")){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
 
             //instantiate bullet
-            GameObject bullet = Instantiate(Projectile, fireOffset.position, fireOffset.rotation);
+            GameObject bullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
             dir.Normalize();
             //let it go
             bullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
@@ -75,13 +71,18 @@ public class PlayerAction : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collisionObject){
-        if(collisionObject.gameObject.tag == "Enemy")
+        if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
+            Debug.Log(collisionObject.gameObject.tag);
             alive = false;
+        }
+        if(collisionObject.gameObject.name == "End")
+            success = true;
     }
 
     void OnCollisionStay2D(Collision2D collisionObject){
         //Check if the player is on the ground to jump
         //if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
+        if(collisionObject.gameObject.tag == "Obstacle")
             grounded = true;
         //}
     }

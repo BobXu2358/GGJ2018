@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114267189844050876}
   - component: {fileID: 82968917382982680}
   - component: {fileID: 70388432020205088}
+  - component: {fileID: 95454244909419424}
   m_Layer: 0
   m_Name: Accelerate
   m_TagString: Enemy
@@ -102,7 +103,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1790710910756708}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 440916dc463df0e43a3c07e50a08b63b, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -189,6 +190,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95454244909419424
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790710910756708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b66b3d1c1afb564787d0f4e25a654eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114066650730130426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138cd93b0e25eed4cbc3c6adac57b369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 2
+  playerType: 3
   playerTf: {fileID: 4995763715293186}
   playerBc: {fileID: 70388432020205088}
   playerRb: {fileID: 50547376392458498}
@@ -212,6 +230,7 @@ MonoBehaviour:
   fireSpeed: 2
   fireOffset: {fileID: 4995763715293186}
   alive: 1
+  success: 0
 --- !u!114 &114267189844050876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,9 +249,9 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 4
   AttackInterval: 2
-  m_Type: 3
   Prefab_Bullet: {fileID: 0}
   bulletSpeed: 0.3
+  activeAttack: 1
   m_AudioSource: {fileID: 0}
   m_Animator: {fileID: 0}
 --- !u!212 &212093943716643470

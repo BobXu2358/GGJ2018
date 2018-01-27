@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114672459054589982}
   - component: {fileID: 82924262530136518}
   - component: {fileID: 70876804946482200}
+  - component: {fileID: 95090370820570788}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Enemy
@@ -102,7 +103,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1694231069771230}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 440916dc463df0e43a3c07e50a08b63b, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -189,6 +190,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95090370820570788
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1694231069771230}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b66b3d1c1afb564787d0f4e25a654eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114325523145466156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +230,7 @@ MonoBehaviour:
   fireSpeed: 2
   fireOffset: {fileID: 4154506030268742}
   alive: 1
+  success: 0
 --- !u!114 &114672459054589982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,9 +249,9 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
-  m_Type: 3
   Prefab_Bullet: {fileID: 0}
   bulletSpeed: 0.3
+  activeAttack: 1
   m_AudioSource: {fileID: 0}
   m_Animator: {fileID: 0}
 --- !u!212 &212953578765806112
