@@ -837,6 +837,7 @@ MonoBehaviour:
   mapGroundBc: {fileID: 1604819305}
   mainCam: {fileID: 1800136721}
   cameraOffset: {x: 0, y: 0, z: -10}
+  cameraMoveTime: 0.15
 --- !u!1 &1849712199
 GameObject:
   m_ObjectHideFlags: 0

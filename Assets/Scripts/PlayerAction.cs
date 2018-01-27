@@ -20,7 +20,7 @@ public class PlayerAction : MonoBehaviour {
         if(playerType != CharacterType.None){
             //Control player to move horizontally
             Vector2 playerSpeed = playerRb.velocity;
-            playerSpeed.x = Input.GetAxis("Horizontal") * moveSpeed;
+            playerSpeed.x = Input.GetAxisRaw("Horizontal") * moveSpeed;
             playerRb.velocity = playerSpeed;
 
             if (grounded)
@@ -72,7 +72,6 @@ public class PlayerAction : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collisionObject){
         if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
-            Debug.Log(collisionObject.gameObject.tag);
             alive = false;
         }
         if(collisionObject.gameObject.name == "End")
