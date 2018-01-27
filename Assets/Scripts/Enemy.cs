@@ -9,7 +9,7 @@ public class Enemy {
     //自身属性字段
     public GameObject _selfObj;
     public Animator _Animator;
-    public EnemyType _Type;
+    public CharacterType _Type;
 
     //附加属性
     public float time_Patrol;

@@ -27,7 +27,7 @@ public class EnemyStandingState : EnemyBaseState {
     {
         if (_enemy.FoundPlayer())
         {
-            if (_enemy._Type != EnemyType.Flash)
+            if (_enemy._Type != CharacterType.Flash)
             {
                 _enemy.SetEnemyState(new EnemyAlertState(_enemy));
             } 

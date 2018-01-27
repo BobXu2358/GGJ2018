@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 
 public class PlayerAction : MonoBehaviour {
-    public EnemyType playerType;
+    public CharacterType playerType;
     public Transform playerTf;
     public BoxCollider2D playerBc;
     public Rigidbody2D playerRb;
@@ -16,15 +16,17 @@ public class PlayerAction : MonoBehaviour {
     bool grounded = true;
 
     void FixedUpdate(){
-        //Control player to move horizontally
-        Vector2 playerSpeed = playerRb.velocity;
-        playerSpeed.x = Input.GetAxis("Horizontal") * moveSpeed;
-        playerRb.velocity = playerSpeed;
+        if(playerType != CharacterType.None){
+            //Control player to move horizontally
+            Vector2 playerSpeed = playerRb.velocity;
+            playerSpeed.x = Input.GetAxis("Horizontal") * moveSpeed;
+            playerRb.velocity = playerSpeed;
 
-        //Control player to jump
-        if(grounded && Input.GetButton("Jump")){
-            grounded = false;
-            playerRb.AddForce(new Vector2(0, jumpForce));
+            //Control player to jump
+            if(grounded && Input.GetButton("Jump")){
+                grounded = false;
+                playerRb.AddForce(new Vector2(0, jumpForce));
+            }
         }
 
         //Make player not move outer of map border
@@ -59,6 +61,7 @@ public class PlayerAction : MonoBehaviour {
     }
 
     void OnCollisionStay2D(Collision2D collisionObject){
+        Debug.Log(collisionObject.gameObject.name);
         //Check if the player is on the ground to jump
         if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
             grounded = true;

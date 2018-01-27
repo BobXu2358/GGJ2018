@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour {
         GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject em in enemyList)
         {
-            em.GetComponent<testEnemy>().SetPlayer();
+            //em.GetComponent<EnemyAI>().SetPlayer();
         }
     }
 }

@@ -55,7 +55,7 @@ public class EnemyChaseState : EnemyBaseState {
     {
         Debug.Log("Chase");
         Vector2 forceDir = _enemy.Player.transform.position - _enemy._selfObj.transform.position;
-        if (_enemy._Type != EnemyType.Fly)
+        if (_enemy._Type != CharacterType.Fly)
         {
             forceDir.y = 0.0f;
         }
@@ -74,10 +74,10 @@ public class EnemyChaseState : EnemyBaseState {
         }
 
         // 判定是否转换状态
-        if (_enemy._Type == EnemyType.Accelerate)
+        if (_enemy._Type == CharacterType.Accelerate)
         {
         }
-        else if (_enemy._Type == EnemyType.Shoot  || _enemy._Type == EnemyType.Pierce)
+        else if (_enemy._Type == CharacterType.Shoot  || _enemy._Type == CharacterType.Pierce)
         {
             //if (forceDir.magnitude < _enemy.attackDistance)
             //{

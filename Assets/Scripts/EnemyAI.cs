@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class testEnemy : MonoBehaviour {
+public class EnemyAI : MonoBehaviour {
 
     [HideInInspector] public Transform PatrolTarget;
     [HideInInspector] public GameObject Player;
@@ -15,7 +15,7 @@ public class testEnemy : MonoBehaviour {
     public float DistanceFind = 10.0f;   //发现玩家的距离
     public float SpeedRun = 2.0f;        //移动速度
     public float AttackInterval = 2.0f;  //发射子弹的间隔
-    public EnemyType m_Type;             //怪物类型
+    public CharacterType m_Type;             //怪物类型
     public GameObject Prefab_Bullet;     //子弹的预制体
     public float bulletSpeed = 0.3f;     //子弹速度
 

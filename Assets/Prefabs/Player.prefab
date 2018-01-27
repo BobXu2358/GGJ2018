@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61247454977032540}
   - component: {fileID: 50215093672082232}
   - component: {fileID: 114795970240185034}
+  - component: {fileID: 114822755618167068}
+  - component: {fileID: 82114570181563814}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -88,6 +90,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29166666, y: 0.7708333}
   m_EdgeRadius: 0
+--- !u!82 &82114570181563814
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875401445427776}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114795970240185034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138cd93b0e25eed4cbc3c6adac57b369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 0
+  playerType: 1
   playerTf: {fileID: 4477364490744560}
   playerBc: {fileID: 61247454977032540}
   playerRb: {fileID: 50215093672082232}
@@ -110,6 +192,29 @@ MonoBehaviour:
   Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4477364490744560}
+--- !u!114 &114822755618167068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875401445427776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274ab3b61220ae24da6ed4f36b92a76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PatrolTarget: {fileID: 0}
+  Player: {fileID: 0}
+  TimeToPatrol: 3
+  TimeAlert: 0
+  DistanceFind: 10
+  SpeedRun: 2
+  AttackInterval: 2
+  m_Type: 0
+  Prefab_Bullet: {fileID: 0}
+  bulletSpeed: 0.3
+  m_AudioSource: {fileID: 0}
+  m_Animator: {fileID: 0}
 --- !u!212 &212314854625468138
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,7 +36,7 @@ public class EnemyPatrolState : EnemyBaseState
     {
         if (_enemy.FoundPlayer())
         {
-            if (_enemy._Type != EnemyType.Flash)
+            if (_enemy._Type != CharacterType.Flash)
             {
                 _enemy.SetEnemyState(new EnemyAlertState(_enemy));
             }
@@ -53,7 +53,7 @@ public class EnemyPatrolState : EnemyBaseState
         JudgePatrolPos();
 
         //根据怪物不同类型进行行为模式的变化 
-        if (_enemy._Type == EnemyType.Accelerate || _enemy._Type == EnemyType.Shoot || _enemy._Type == EnemyType.Pierce)
+        if (_enemy._Type == CharacterType.Accelerate || _enemy._Type == CharacterType.Shoot || _enemy._Type == CharacterType.Pierce)
         {
             Vector2 forceDir = tartgetPos - _enemy._selfObj.transform.position;
             forceDir.y = 0.0f;
@@ -72,7 +72,7 @@ public class EnemyPatrolState : EnemyBaseState
                 else { _enemy._selfObj.transform.Translate(-moveSpeed); }
             }
         }
-        else if (_enemy._Type == EnemyType.Flash)
+        else if (_enemy._Type == CharacterType.Flash)
         {
             FlashToOnePoint();
         }
