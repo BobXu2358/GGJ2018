@@ -12,20 +12,9 @@ public class PlayerAction : MonoBehaviour {
     bool grounded = true;
 
     void FixedUpdate(){
-        Vector3 moveOffset = new Vector3(0, 0, 0);
-        moveOffset.x += Input.GetAxis("Horizontal") * moveSpeed;
-        Vector3 finPlayerPos = playerTf.position + moveOffset;
-
-        if(finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
-            finPlayerPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + playerBc.size.x / 2;
-        if(finPlayerPos.x + playerBc.size.x / 2 >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
-            finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
-
-        playerTf.position = finPlayerPos;
-
-        if(playerTf.position.y - playerBc.size.y / 2 <= mapGroundTf.position.y + mapGroundBc.size.y / 2)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        Vector2 playerSpeed = playerRb.velocity;
+        playerSpeed.x = Input.GetAxis("Horizontal") * moveSpeed;
+        playerRb.velocity = playerSpeed;
         if(grounded && Input.GetButton("Jump")){
             grounded = false;
             playerRb.AddForce(new Vector2(0, jumpForce));
