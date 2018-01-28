@@ -94,6 +94,11 @@ public class PlayerAction : MonoBehaviour {
 
                 //instantiate bullet
                 mindBullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
+
+                if (transform.localScale.x == -1)
+                    mindBullet.GetComponent<SpriteRenderer>().flipX = true;
+                
+                 
                 dir.Normalize();
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
