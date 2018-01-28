@@ -29,6 +29,11 @@ public class PlayerAction : MonoBehaviour {
     private Color tempColor = Color.white;
     private float alphaChange;
 
+    [SerializeField] private AudioClip m_JumpSound;
+    [SerializeField] private AudioClip m_TransmitSound;
+    [SerializeField] private AudioClip m_TransSuccessSound;
+    [SerializeField] private AudioClip m_WalkSound;
+
     void Start()
     {
         realTimeSpeed = moveSpeed;
@@ -93,6 +98,8 @@ public class PlayerAction : MonoBehaviour {
                 dir.Normalize();
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+
+                PlayTransmitSound();
             }
 
             if (playerType == CharacterType.Accelerate)
@@ -110,19 +117,21 @@ public class PlayerAction : MonoBehaviour {
 
             }
 
-            else if (Input.GetButtonDown("Power"))
+            if (Input.GetButtonDown("Power"))
             {
                 if (playerType == CharacterType.Shoot)
                     Shoot(playerTf.localScale.x);
                 if (playerType == CharacterType.Pierce)
                     Pierce(playerTf.localScale.x);
-                if (playerType == CharacterType.Accelerate)
-                {
-                    realTimeSpeed = SprintSpeed;
-                    Sprint();
-                }
+                
                 if (playerType == CharacterType.Flash)
                     Flash(playerTf.localScale.x);
+            }
+            if (Input.GetButtonUp("Power"))
+            {
+                anim.SetTrigger("exit");
+                realTimeSpeed = moveSpeed;
+                
             }
         }
     }
@@ -133,9 +142,9 @@ public class PlayerAction : MonoBehaviour {
         }
         if(collisionObject.gameObject.name == "End")
             success = true;
-    }
+    //}
 
-    void OnCollisionStay2D(Collision2D collisionObject){
+    //void OnCollisionStay2D(Collision2D collisionObject){
         //Check if the player is on the ground to jump
         //if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
         if(collisionObject.gameObject.tag == "Obstacle"){
@@ -163,7 +172,8 @@ public class PlayerAction : MonoBehaviour {
 
     void PlayJumpSound()
     {
-        ;
+        this.GetComponent<AudioSource>().clip = m_JumpSound;
+        this.GetComponent<AudioSource>().Play() ;
     }
 
     void PlayMoveSound()
@@ -171,19 +181,26 @@ public class PlayerAction : MonoBehaviour {
         ;
     }
 
-    void PlayTransmitSound()
+    public void PlayTransmitSuccessSound()
     {
-        ;
+        this.GetComponent<AudioSource>().clip = m_TransSuccessSound;
+        this.GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayTransmitSound()
+    {
+        this.GetComponent<AudioSource>().clip = m_TransmitSound;
+        this.GetComponent<AudioSource>().Play();
     }
 
     void Shoot(float facing)
     {
         Debug.Log("shooting");
-        anim.SetBool("shoot", true);
-        //let it go
+        anim.SetTrigger("shoot");
+
         GameObject bullet0 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
-        GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
-        GameObject bullet2 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
+        GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, Quaternion.Euler(0, 0, 45));
+        GameObject bullet2 = Instantiate(MultiShotBullet, fireOffset.position, Quaternion.Euler(0, 0, -45));
 
         Vector2 dir1 = Quaternion.Euler(0, 0, 45) * Vector2.right;
         Vector2 dir2 = Quaternion.Euler(0, 0, -45) * Vector2.right;
@@ -238,20 +255,20 @@ public class PlayerAction : MonoBehaviour {
 
         if (facing == 1)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward);
-            if(hit.collider!= null && hit.distance > flashDistance) 
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward);
+            //if(hit.collider!= null && hit.distance > flashDistance) 
                 transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
-            else
-                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+            //else
+            //    transform.position = new Vector3(x + hit.distance, transform.position.y, transform.position.z);
         }
 
         else
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.forward);
-            if (hit.collider != null && hit.distance > flashDistance)
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.forward);
+            //if (hit.collider != null && hit.distance > flashDistance)
                 transform.position = new Vector3(x - flashDistance, transform.position.y, transform.position.z);
-            else
-                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+            //else
+                //transform.position = new Vector3(x - hit.distance, transform.position.y, transform.position.z);
         }
 
     }

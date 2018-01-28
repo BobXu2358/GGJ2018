@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour {
             player.GetComponent<EnemyAI>().enabled = true;
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             player.GetComponent<Animator>().SetBool("isMoving", false);
-            player.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+            player.GetComponent<PlayerAction>().PlayTransmitSuccessSound();
 
             //change player tag
             player.tag = "Enemy";
@@ -44,6 +44,7 @@ public class Projectile : MonoBehaviour {
             //enable target's player control script
             col.gameObject.GetComponent<PlayerAction>().enabled = true;
             col.gameObject.GetComponent<EnemyAI>().enabled = false;
+            col.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
 
             //change the tag of new player
             col.gameObject.tag = "Player";
