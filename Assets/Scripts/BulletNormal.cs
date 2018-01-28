@@ -7,6 +7,10 @@ public class BulletNormal : MonoBehaviour {
 
     public float bulletLifeTime = 10;
 
+    public GameObject spark;
+
+    public Transform head;
+
     // Use this for initialization
     void Start () {
         Destroy(this.gameObject, bulletLifeTime);
@@ -34,8 +38,9 @@ public class BulletNormal : MonoBehaviour {
         }
         else
         {
-            if (ooo.tag == "Obstacles")
+            if (ooo.tag == "Obstacle")
             {
+                Instantiate(spark,head.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
         }

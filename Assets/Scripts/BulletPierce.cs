@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BulletPierce : MonoBehaviour {
 
-    public float bulletLifeTime = 10;
+    public float bulletLifeTime = 5;
 
     // Use this for initialization
     void Start () {
@@ -21,5 +21,9 @@ public class BulletPierce : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject ooo = collision.gameObject;
+        if(collision.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

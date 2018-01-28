@@ -70,12 +70,12 @@ public class PlayerAction : MonoBehaviour {
             }
 
             //Make player not move outer of map border
-            Vector3 finPlayerPos = playerTf.position;
-            if (finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
-                finPlayerPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + playerBc.size.x / 2;
-            if (finPlayerPos.x + playerBc.size.x / 2 >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
-                finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
-            playerTf.position = finPlayerPos;
+            //Vector3 finPlayerPos = playerTf.position;
+            //if (finPlayerPos.x - playerBc.size.x / 2 <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
+            //    finPlayerPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + playerBc.size.x / 2;
+            //if (finPlayerPos.x + playerBc.size.x / 2 >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
+            //    finPlayerPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - playerBc.size.x / 2;
+            //playerTf.position = finPlayerPos;
 
             //Make player turn back when changing direction
             Vector3 finPlayerScale = playerTf.localScale;
@@ -88,15 +88,15 @@ public class PlayerAction : MonoBehaviour {
 
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
                 Vector2 dir = mousePos - new Vector2(fireOffset.position.x, fireOffset.position.y);
-
+                
                 //instantiate bullet
-                mindBullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
+                mindBullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), Quaternion.Euler(0 , 0, Mathf.Atan2(dir.y, dir.x)/Mathf.PI * 180));
 
                 if (transform.localScale.x == -1)
                     mindBullet.GetComponent<SpriteRenderer>().flipX = true;
                 
-                 
                 dir.Normalize();
+
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
 
@@ -108,12 +108,10 @@ public class PlayerAction : MonoBehaviour {
                 if (Input.GetButton("Power"))
                 {
                     realTimeSpeed = SprintSpeed;
-                    Sprint();
                 }
                 else
                 {
                     realTimeSpeed = moveSpeed;
-                    anim.SetTrigger("exit");
                 }
 
             }
@@ -131,12 +129,16 @@ public class PlayerAction : MonoBehaviour {
                 
                 if (playerType == CharacterType.Flash)
                     Flash(playerTf.localScale.x);
+
+                if (playerType == CharacterType.Accelerate)
+                {
+                    anim.SetTrigger("enterAccelerate");
+                }
             }
             if (Input.GetButtonUp("Power"))
             {
-                anim.SetTrigger("exit");
+                anim.SetTrigger("exitAccelerate");
                 realTimeSpeed = moveSpeed;
-                
             }
         }
     }
@@ -244,12 +246,6 @@ public class PlayerAction : MonoBehaviour {
             bullet.GetComponent<Rigidbody2D>().velocity = -transform.right * fireSpeed;
         }
             
-    }
-
-    void Sprint()
-    {
-        anim.SetTrigger("start");
-        realTimeSpeed = SprintSpeed;
     }
 
     void Flash(float facing)
