@@ -52,16 +52,13 @@ public class PlayerAction : MonoBehaviour {
                 playerSpeed.x = Input.GetAxisRaw("Horizontal") * realTimeSpeed;
                 playerRb.velocity = playerSpeed;
 
-                if (grounded)
+                if (Input.GetAxisRaw("Horizontal") != 0)
                 {
-                    if (Input.GetAxisRaw("Horizontal") != 0 && grounded)
-                    {
-                        this.GetComponent<Animator>().SetBool("isMoving", true);
-                    }
-                    else
-                    {
-                        this.GetComponent<Animator>().SetBool("isMoving", false);
-                    }
+                    this.GetComponent<Animator>().SetBool("isMoving", true);
+                }
+                else
+                {
+                    this.GetComponent<Animator>().SetBool("isMoving", false);
                 }
 
                 //Control player to jump
@@ -144,8 +141,14 @@ public class PlayerAction : MonoBehaviour {
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collisionObject){
+        if(collisionObject.gameObject.tag == "Bullet"){
+            alive = false;
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collisionObject){
-        if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
+        if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground"){
             alive = false;
         }
     //}
@@ -156,8 +159,8 @@ public class PlayerAction : MonoBehaviour {
         if(collisionObject.gameObject.tag == "Obstacle"){
             Vector3 tmpPoint = playerTf.position + new Vector3(-playerBc.size.x / 3, -playerBc.size.y / 2, 0);
             RaycastHit2D hit = Physics2D.Raycast(tmpPoint, new Vector2(0, -1));
-            Debug.Log(Mathf.Abs(tmpPoint.y - hit.point.y));
-            Debug.DrawLine(tmpPoint,hit.point);
+            //Debug.Log(Mathf.Abs(tmpPoint.y - hit.point.y));
+            //Debug.DrawLine(tmpPoint,hit.point);
             if(hit.collider != null){
                 if(hit.collider.gameObject.tag == "Obstacle" && Mathf.Abs(tmpPoint.y - hit.point.y) <= 0.05f){
                     grounded = true;
@@ -165,8 +168,8 @@ public class PlayerAction : MonoBehaviour {
             }
             tmpPoint = playerTf.position + new Vector3(playerBc.size.x / 3, -playerBc.size.y / 2, 0);
             hit = Physics2D.Raycast(tmpPoint, new Vector2(0, -1));
-            Debug.Log(Mathf.Abs(tmpPoint.y - hit.point.y));
-            Debug.DrawLine(tmpPoint,hit.point);
+            //Debug.Log(Mathf.Abs(tmpPoint.y - hit.point.y));
+            //Debug.DrawLine(tmpPoint,hit.point);
             if(hit.collider != null){
                 if(hit.collider.gameObject.tag == "Obstacle" && Mathf.Abs(tmpPoint.y - hit.point.y) <= 0.05f){
                     grounded = true;

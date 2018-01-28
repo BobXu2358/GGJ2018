@@ -151,6 +151,10 @@ public class EnemyPatrolState : EnemyBaseState
         {
             _enemy._selfObj.transform.position = tartgetPos;
             //Debug.Log(_enemy.initPos);
+            //if (ShowTime == 0.3f && FadeTime <= 0.0f)
+            {
+                //_enemy._selfObj.GetComponent<Renderer>().material.SetColor("_Color", tempColor);
+            }
 
             if (ShowTime > 0)
             {

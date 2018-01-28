@@ -52,3 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 0}
+  backgroundImage: {fileID: 2800000, guid: 39cd59d97ebb5394f9baf8505f6b191d, type: 3}

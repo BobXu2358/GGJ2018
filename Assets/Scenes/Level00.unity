@@ -720,6 +720,11 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 114512026134251806, guid: c6725ad26d9cb5940a593cdb0faa41f0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6725ad26d9cb5940a593cdb0faa41f0, type: 2}
   m_IsPrefabParent: 0
@@ -792,6 +797,11 @@ Prefab:
       propertyPath: mapGroundBc
       value: 
       objectReference: {fileID: 1604819305}
+    - target: {fileID: 114512026134251806, guid: c6725ad26d9cb5940a593cdb0faa41f0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6725ad26d9cb5940a593cdb0faa41f0, type: 2}
   m_IsPrefabParent: 0
@@ -868,6 +878,7 @@ GameObject:
   - component: {fileID: 1800136720}
   - component: {fileID: 1800136719}
   - component: {fileID: 1800136723}
+  - component: {fileID: 1800136724}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -957,6 +968,14 @@ MonoBehaviour:
   mainCam: {fileID: 1800136721}
   cameraOffset: {x: 0, y: 0, z: -10}
   cameraMoveTime: 0.15
+--- !u!45 &1800136724
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800136718}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: d081ab6ded70dae40964790868897f31, type: 2}
 --- !u!1 &1849712199
 GameObject:
   m_ObjectHideFlags: 0
