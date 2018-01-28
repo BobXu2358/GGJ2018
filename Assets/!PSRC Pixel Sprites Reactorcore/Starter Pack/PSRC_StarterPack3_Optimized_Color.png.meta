@@ -1,8 +1,30 @@
 fileFormatVersion: 2
 guid: 324471bdd196a984ba3b218c7046bdd7
-timeCreated: 18446744011573954816
+timeCreated: 1517126030
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: PSRC_StarterPack3_Optimized_Color_0
+    21300002: PSRC_StarterPack3_Optimized_Color_1
+    21300004: PSRC_StarterPack3_Optimized_Color_2
+    21300006: PSRC_StarterPack3_Optimized_Color_3
+    21300008: PSRC_StarterPack3_Optimized_Color_4
+    21300010: PSRC_StarterPack3_Optimized_Color_5
+    21300012: PSRC_StarterPack3_Optimized_Color_6
+    21300014: PSRC_StarterPack3_Optimized_Color_7
+    21300016: PSRC_StarterPack3_Optimized_Color_8
+    21300018: PSRC_StarterPack3_Optimized_Color_9
+    21300020: PSRC_StarterPack3_Optimized_Color_10
+    21300022: PSRC_StarterPack3_Optimized_Color_11
+    21300024: PSRC_StarterPack3_Optimized_Color_12
+    21300026: PSRC_StarterPack3_Optimized_Color_13
+    21300028: PSRC_StarterPack3_Optimized_Color_14
+    21300030: PSRC_StarterPack3_Optimized_Color_15
+    21300032: PSRC_StarterPack3_Optimized_Color_16
+    21300034: PSRC_StarterPack3_Optimized_Color_17
+    21300036: PSRC_StarterPack3_Optimized_Color_18
+    21300038: PSRC_StarterPack3_Optimized_Color_19
+    21300040: PSRC_StarterPack3_Optimized_Color_20
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -67,7 +89,301 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 110
+        width: 122
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 124
+        width: 85
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 12
+        width: 55
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_3
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 16
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_4
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 73
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 73
+        width: 9
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_6
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 79
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_7
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 86
+        width: 42
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 45
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_9
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 46
+        width: 11
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_10
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 47
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_11
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 48
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_12
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 55
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_13
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 16
+        width: 46
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_14
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 25
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_15
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 34
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_16
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 26
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_17
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 10
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_18
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 11
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 10
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PSRC_StarterPack3_Optimized_Color_20
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 11
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
