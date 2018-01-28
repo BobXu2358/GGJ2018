@@ -7,6 +7,7 @@ public class EnemyAttackState : EnemyBaseState
     private Enemy _enemy;
 
     private float tempCount = 0.0f;
+
     public EnemyAttackState(Enemy enemy)
     {
         _enemy = enemy;

@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741145039946802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.78, y: -0.95, z: 0}
+  m_LocalPosition: {x: -4.8266582, y: -0.8443929, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4334438445855712}
@@ -225,6 +225,7 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
+  m_Type: 0
   Prefab_Bullet: {fileID: 1173642173609264, guid: ef6f4f213a3c0d74b997f945117546bc,
     type: 2}
   bulletSpeed: 0.3
@@ -250,12 +251,13 @@ MonoBehaviour:
   mapGroundBc: {fileID: 0}
   moveSpeed: 3
   jumpForce: 150
-  Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
+  Projectile: {fileID: 1644644534857110, guid: 0c3478ddf1d7ee64c81ab242babb42c6, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4537070507462928}
   alive: 1
   MultiShotBullet: {fileID: 0}
-  PiercingBullet: {fileID: 0}
+  PiercingBullet: {fileID: 1173642173609264, guid: ef6f4f213a3c0d74b997f945117546bc,
+    type: 2}
   SprintSpeed: 0
   success: 0
 --- !u!212 &212380487821715952
@@ -292,7 +294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 502af21a54a6ee244b6fd15652bd5dba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c58e0c4c58ea44d2aba8dea8e903976, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

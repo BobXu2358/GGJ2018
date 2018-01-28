@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508367656035878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.435342, y: -0.918, z: 0}
+  m_LocalPosition: {x: -8.707659, y: -0.9106671, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4114632067199080}
@@ -225,6 +225,7 @@ MonoBehaviour:
   DistanceFind: 10
   SpeedRun: 2
   AttackInterval: 2
+  m_Type: 0
   Prefab_Bullet: {fileID: 0}
   bulletSpeed: 0.3
   activeAttack: 1
@@ -249,10 +250,13 @@ MonoBehaviour:
   mapGroundBc: {fileID: 0}
   moveSpeed: 3
   jumpForce: 150
-  Projectile: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e, type: 2}
+  Projectile: {fileID: 1644644534857110, guid: 0c3478ddf1d7ee64c81ab242babb42c6, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4448407884916590}
   alive: 1
+  MultiShotBullet: {fileID: 0}
+  PiercingBullet: {fileID: 0}
+  SprintSpeed: 0
   success: 0
 --- !u!212 &212970562463381398
 SpriteRenderer:
