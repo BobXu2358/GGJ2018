@@ -18,7 +18,6 @@ public class PlayerAction : MonoBehaviour {
     public GameObject PiercingBullet;
     public float SprintSpeed;
     public float flashDistance;
-    public bool success = false;
 
     private float realTimeSpeed;
     private GameObject mindBullet;
@@ -144,8 +143,6 @@ public class PlayerAction : MonoBehaviour {
         if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
             alive = false;
         }
-        if(collisionObject.gameObject.name == "End")
-            success = true;
     //}
 
     //void OnCollisionStay2D(Collision2D collisionObject){
