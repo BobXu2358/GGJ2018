@@ -249,7 +249,7 @@ MonoBehaviour:
   mapGroundTf: {fileID: 0}
   mapGroundBc: {fileID: 0}
   moveSpeed: 3
-  jumpForce: 200
+  jumpForce: 300
   Projectile: {fileID: 1644644534857110, guid: 0c3478ddf1d7ee64c81ab242babb42c6, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4448407884916590}
