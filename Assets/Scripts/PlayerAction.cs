@@ -29,6 +29,11 @@ public class PlayerAction : MonoBehaviour {
     private Color tempColor = Color.white;
     private float alphaChange;
 
+    [SerializeField] private AudioClip m_JumpSound;
+    [SerializeField] private AudioClip m_TransmitSound;
+    [SerializeField] private AudioClip m_TransSuccessSound;
+    [SerializeField] private AudioClip m_WalkSound;
+
     void Start()
     {
         realTimeSpeed = moveSpeed;
@@ -93,6 +98,8 @@ public class PlayerAction : MonoBehaviour {
                 dir.Normalize();
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+
+                PlayTransmitSound();
             }
 
             if (playerType == CharacterType.Accelerate)
@@ -133,9 +140,9 @@ public class PlayerAction : MonoBehaviour {
         }
         if(collisionObject.gameObject.name == "End")
             success = true;
-    }
+    //}
 
-    void OnCollisionStay2D(Collision2D collisionObject){
+    //void OnCollisionStay2D(Collision2D collisionObject){
         //Check if the player is on the ground to jump
         //if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
         if(collisionObject.gameObject.tag == "Obstacle"){
@@ -163,7 +170,8 @@ public class PlayerAction : MonoBehaviour {
 
     void PlayJumpSound()
     {
-        ;
+        this.GetComponent<AudioSource>().clip = m_JumpSound;
+        this.GetComponent<AudioSource>().Play() ;
     }
 
     void PlayMoveSound()
@@ -171,9 +179,16 @@ public class PlayerAction : MonoBehaviour {
         ;
     }
 
-    void PlayTransmitSound()
+    public void PlayTransmitSuccessSound()
     {
-        ;
+        this.GetComponent<AudioSource>().clip = m_TransSuccessSound;
+        this.GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayTransmitSound()
+    {
+        this.GetComponent<AudioSource>().clip = m_TransmitSound;
+        this.GetComponent<AudioSource>().Play();
     }
 
     void Shoot(float facing)
