@@ -18,7 +18,6 @@ public class PlayerAction : MonoBehaviour {
     public GameObject PiercingBullet;
     public float SprintSpeed;
     public float flashDistance;
-    public bool success = false;
 
     private float realTimeSpeed;
     private GameObject mindBullet;
@@ -95,6 +94,11 @@ public class PlayerAction : MonoBehaviour {
 
                 //instantiate bullet
                 mindBullet = Instantiate(Projectile, fireOffset.position + new Vector3(0, 0, -5), fireOffset.rotation);
+
+                if (transform.localScale.x == -1)
+                    mindBullet.GetComponent<SpriteRenderer>().flipX = true;
+                
+                 
                 dir.Normalize();
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
@@ -120,7 +124,11 @@ public class PlayerAction : MonoBehaviour {
             if (Input.GetButtonDown("Power"))
             {
                 if (playerType == CharacterType.Shoot)
-                    Shoot(playerTf.localScale.x);
+                {
+                    Debug.Log("shooting");
+                    anim.SetTrigger("shoot");
+                }
+                    
                 if (playerType == CharacterType.Pierce)
                     Pierce(playerTf.localScale.x);
                 
@@ -140,8 +148,6 @@ public class PlayerAction : MonoBehaviour {
         if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
             alive = false;
         }
-        if(collisionObject.gameObject.name == "End")
-            success = true;
     //}
 
     //void OnCollisionStay2D(Collision2D collisionObject){
@@ -193,11 +199,9 @@ public class PlayerAction : MonoBehaviour {
         this.GetComponent<AudioSource>().Play();
     }
 
-    void Shoot(float facing)
+    void Shoot()
     {
-        Debug.Log("shooting");
-        anim.SetTrigger("shoot");
-
+        
         GameObject bullet0 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
         GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, Quaternion.Euler(0, 0, 45));
         GameObject bullet2 = Instantiate(MultiShotBullet, fireOffset.position, Quaternion.Euler(0, 0, -45));
@@ -205,14 +209,14 @@ public class PlayerAction : MonoBehaviour {
         Vector2 dir1 = Quaternion.Euler(0, 0, 45) * Vector2.right;
         Vector2 dir2 = Quaternion.Euler(0, 0, -45) * Vector2.right;
         //let it go
-        if (facing == 1)
+        if (transform.localScale.x == 1)
         {
             bullet0.GetComponent<Rigidbody2D>().velocity = transform.right * fireSpeed;
             bullet1.GetComponent<Rigidbody2D>().velocity = dir1 * fireSpeed;
             bullet2.GetComponent<Rigidbody2D>().velocity = dir2 * fireSpeed;
         }
 
-        if (facing == -1)
+        if (transform.localScale.x == -1)
         {
             bullet0.GetComponent<SpriteRenderer>().flipX = true;
             bullet1.GetComponent<SpriteRenderer>().flipX = true;

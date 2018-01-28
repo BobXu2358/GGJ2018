@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if(player.GetComponent<PlayerAction>().success){
+        GameObject exit = GameObject.FindGameObjectsWithTag("Finish")[0];
+        if(player.transform.position.x - player.GetComponent<CapsuleCollider2D>().size.x / 2 >= exit.transform.position.x + exit.GetComponent<BoxCollider2D>().size.x / 2){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
