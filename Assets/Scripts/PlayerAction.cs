@@ -148,7 +148,7 @@ public class PlayerAction : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collisionObject){
-        if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground"){
+        if(collisionObject.gameObject.tag == "Enemy" || collisionObject.gameObject.name == "Map Ground" || collisionObject.gameObject.tag == "Bullet"){
             alive = false;
         }
     //}
