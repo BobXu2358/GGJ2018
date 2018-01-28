@@ -19,12 +19,12 @@ public class CameraManager : MonoBehaviour {
 
     void Update(){
         Vector3 finCameraPos = followingTf.position + cameraOffset;
-        if(finCameraPos.x - cameraHalfWidth <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
+        /*if(finCameraPos.x - cameraHalfWidth <= mapGroundTf.position.x - mapGroundBc.size.x / 2)
             finCameraPos.x = mapGroundTf.position.x - mapGroundBc.size.x / 2 + cameraHalfWidth;
         if(finCameraPos.x + cameraHalfWidth >= mapGroundTf.position.x + mapGroundBc.size.x / 2)
             finCameraPos.x = mapGroundTf.position.x + mapGroundBc.size.x / 2 - cameraHalfWidth;
         if(finCameraPos.y - cameraHalfHeight <= mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y)
-            finCameraPos.y = mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y + cameraHalfHeight;
+            finCameraPos.y = mapGroundTf.position.y + mapGroundBc.size.y / 2 + followingBc.size.y + cameraHalfHeight;*/
         Vector3 velocity = Vector3.zero;
         cameraTf.position = Vector3.SmoothDamp(cameraTf.position, finCameraPos, ref velocity, cameraMoveTime);
         cameraTf.position = finCameraPos;
