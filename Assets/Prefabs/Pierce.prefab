@@ -90,7 +90,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8cf0038cfa473214f8d77b0c1fc604ef, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -107,8 +107,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.041666687, y: -0.03125003}
-  m_Size: {x: 0.29166666, y: 0.7708333}
+  m_Offset: {x: -0.041666687, y: -0.041666657}
+  m_Size: {x: 0.29166666, y: 0.75}
   m_Direction: 0
 --- !u!82 &82862552463459258
 AudioSource:
@@ -259,7 +259,12 @@ MonoBehaviour:
   PiercingBullet: {fileID: 1173642173609264, guid: ef6f4f213a3c0d74b997f945117546bc,
     type: 2}
   SprintSpeed: 0
+  flashDistance: 0
   success: 0
+  m_JumpSound: {fileID: 8300000, guid: 808ac441a569b7145ae89e09faf67e0e, type: 3}
+  m_TransmitSound: {fileID: 8300000, guid: 3018d44dbde8e99498477be9bfe41e32, type: 3}
+  m_TransSuccessSound: {fileID: 8300000, guid: b59ec389545fab742a56098c59e807af, type: 3}
+  m_WalkSound: {fileID: 0}
 --- !u!212 &212380487821715952
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -119,7 +119,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8cf0038cfa473214f8d77b0c1fc604ef, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -286,10 +286,15 @@ MonoBehaviour:
   alive: 1
   MultiShotBullet: {fileID: 1798080400767172, guid: b219ccf3a50574c4983eab483bed696e,
     type: 2}
-  PiercingBullet: {fileID: 0}
+  PiercingBullet: {fileID: 1337430138003654, guid: e8f56789a08a9ea47a18065a840f6072,
+    type: 2}
   SprintSpeed: 0
   flashDistance: 0
   success: 0
+  m_JumpSound: {fileID: 8300000, guid: 808ac441a569b7145ae89e09faf67e0e, type: 3}
+  m_TransmitSound: {fileID: 8300000, guid: 3018d44dbde8e99498477be9bfe41e32, type: 3}
+  m_TransSuccessSound: {fileID: 8300000, guid: b59ec389545fab742a56098c59e807af, type: 3}
+  m_WalkSound: {fileID: 0}
 --- !u!212 &212290384408780644
 SpriteRenderer:
   m_ObjectHideFlags: 1

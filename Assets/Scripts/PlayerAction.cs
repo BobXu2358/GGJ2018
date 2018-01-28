@@ -27,12 +27,18 @@ public class PlayerAction : MonoBehaviour {
     private float FadeTime = 0.3f;
     private float ShowTime = 0.3f;
     private Color tempColor = Color.white;
-    private float alphaChange = Time.deltaTime / 0.3f;
+    private float alphaChange;
+
+    [SerializeField] private AudioClip m_JumpSound;
+    [SerializeField] private AudioClip m_TransmitSound;
+    [SerializeField] private AudioClip m_TransSuccessSound;
+    [SerializeField] private AudioClip m_WalkSound;
 
     void Start()
     {
         realTimeSpeed = moveSpeed;
         anim = GetComponent<Animator>();
+        alphaChange = Time.deltaTime / 0.3f;
     }
 
     void FixedUpdate()
@@ -44,7 +50,7 @@ public class PlayerAction : MonoBehaviour {
                 //Control player to move horizontally
                 //Debug.Log(realTimeSpeed);
                 Vector2 playerSpeed = playerRb.velocity;
-                playerSpeed.x = Input.GetAxis("Horizontal") * realTimeSpeed;
+                playerSpeed.x = Input.GetAxisRaw("Horizontal") * realTimeSpeed;
                 playerRb.velocity = playerSpeed;
 
                 if (grounded)
@@ -92,14 +98,9 @@ public class PlayerAction : MonoBehaviour {
                 dir.Normalize();
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
+
+                PlayTransmitSound();
             }
-            /*float fallMultiplier = 2.5f;
-            float lowJumpMultiplier = 2f;
-            if(playerRb.velocity.y < 0){
-                playerRb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }else if(playerRb.velocity.y > 0 && !Input.GetButton("Jump")){
-                playerRb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }*/
 
             if (playerType == CharacterType.Accelerate)
             {
@@ -141,19 +142,38 @@ public class PlayerAction : MonoBehaviour {
         }
         if(collisionObject.gameObject.name == "End")
             success = true;
-    }
+    //}
 
-    void OnCollisionStay2D(Collision2D collisionObject){
+    //void OnCollisionStay2D(Collision2D collisionObject){
         //Check if the player is on the ground to jump
         //if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
-        if(collisionObject.gameObject.tag == "Obstacle")
-            grounded = true;
+        if(collisionObject.gameObject.tag == "Obstacle"){
+            Vector3 tmpPoint = playerTf.position + new Vector3(-playerBc.size.x / 3, -playerBc.size.y / 2, 0);
+            RaycastHit2D hit = Physics2D.Raycast(tmpPoint, new Vector2(0, -1));
+            Debug.Log(Mathf.Abs(tmpPoint.y - hit.point.y));
+            Debug.DrawLine(tmpPoint,hit.point);
+            if(hit.collider != null){
+                if(hit.collider.gameObject.tag == "Obstacle" && Mathf.Abs(tmpPoint.y - hit.point.y) <= 0.05f){
+                    grounded = true;
+                }
+            }
+            tmpPoint = playerTf.position + new Vector3(playerBc.size.x / 3, -playerBc.size.y / 2, 0);
+            hit = Physics2D.Raycast(tmpPoint, new Vector2(0, -1));
+            Debug.Log(Mathf.Abs(tmpPoint.y - hit.point.y));
+            Debug.DrawLine(tmpPoint,hit.point);
+            if(hit.collider != null){
+                if(hit.collider.gameObject.tag == "Obstacle" && Mathf.Abs(tmpPoint.y - hit.point.y) <= 0.05f){
+                    grounded = true;
+                }
+            }
+        }
         //}
     }
 
     void PlayJumpSound()
     {
-        ;
+        this.GetComponent<AudioSource>().clip = m_JumpSound;
+        this.GetComponent<AudioSource>().Play() ;
     }
 
     void PlayMoveSound()
@@ -161,9 +181,16 @@ public class PlayerAction : MonoBehaviour {
         ;
     }
 
-    void PlayTransmitSound()
+    public void PlayTransmitSuccessSound()
     {
-        ;
+        this.GetComponent<AudioSource>().clip = m_TransSuccessSound;
+        this.GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayTransmitSound()
+    {
+        this.GetComponent<AudioSource>().clip = m_TransmitSound;
+        this.GetComponent<AudioSource>().Play();
     }
 
     void Shoot(float facing)
