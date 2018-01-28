@@ -34,7 +34,7 @@ public class BulletNormal : MonoBehaviour {
         }
         else
         {
-            if (ooo.tag != "Enemy" && ooo.tag != "Bullet")
+            if (ooo.tag == "Obstacles")
             {
                 Destroy(this.gameObject);
             }
