@@ -25,13 +25,16 @@ public class BulletNormal : MonoBehaviour {
     {
         GameObject ooo = collision.gameObject;
 
+        Debug.Log(ooo.name);
+
         if (ooo.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            ooo.GetComponent<PlayerAction>().alive = false;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
         {
-            if (ooo.tag != "Enemy")
+            if (ooo.tag != "Enemy" && ooo.tag != "Bullet")
             {
                 Destroy(this.gameObject);
             }

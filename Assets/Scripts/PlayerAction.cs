@@ -116,19 +116,21 @@ public class PlayerAction : MonoBehaviour {
 
             }
 
-            else if (Input.GetButtonDown("Power"))
+            if (Input.GetButtonDown("Power"))
             {
                 if (playerType == CharacterType.Shoot)
                     Shoot(playerTf.localScale.x);
                 if (playerType == CharacterType.Pierce)
                     Pierce(playerTf.localScale.x);
-                if (playerType == CharacterType.Accelerate)
-                {
-                    realTimeSpeed = SprintSpeed;
-                    Sprint();
-                }
+                
                 if (playerType == CharacterType.Flash)
                     Flash(playerTf.localScale.x);
+            }
+            if (Input.GetButtonUp("Power"))
+            {
+                anim.SetTrigger("exit");
+                realTimeSpeed = moveSpeed;
+                
             }
         }
     }
@@ -167,11 +169,11 @@ public class PlayerAction : MonoBehaviour {
     void Shoot(float facing)
     {
         Debug.Log("shooting");
-        anim.SetBool("shoot", true);
-        //let it go
+        anim.SetTrigger("shoot");
+
         GameObject bullet0 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
-        GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
-        GameObject bullet2 = Instantiate(MultiShotBullet, fireOffset.position, fireOffset.rotation);
+        GameObject bullet1 = Instantiate(MultiShotBullet, fireOffset.position, Quaternion.Euler(0, 0, 45));
+        GameObject bullet2 = Instantiate(MultiShotBullet, fireOffset.position, Quaternion.Euler(0, 0, -45));
 
         Vector2 dir1 = Quaternion.Euler(0, 0, 45) * Vector2.right;
         Vector2 dir2 = Quaternion.Euler(0, 0, -45) * Vector2.right;
@@ -226,20 +228,20 @@ public class PlayerAction : MonoBehaviour {
 
         if (facing == 1)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward);
-            if(hit.collider!= null && hit.distance > flashDistance) 
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward);
+            //if(hit.collider!= null && hit.distance > flashDistance) 
                 transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
-            else
-                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+            //else
+            //    transform.position = new Vector3(x + hit.distance, transform.position.y, transform.position.z);
         }
 
         else
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.forward);
-            if (hit.collider != null && hit.distance > flashDistance)
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.forward);
+            //if (hit.collider != null && hit.distance > flashDistance)
                 transform.position = new Vector3(x - flashDistance, transform.position.y, transform.position.z);
-            else
-                transform.position = new Vector3(x + flashDistance, transform.position.y, transform.position.z);
+            //else
+                //transform.position = new Vector3(x - hit.distance, transform.position.y, transform.position.z);
         }
 
     }
