@@ -90,7 +90,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8cf0038cfa473214f8d77b0c1fc604ef, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
     type: 2}
   PiercingBullet: {fileID: 0}
   SprintSpeed: 0
+  flashDistance: 0
   success: 0
 --- !u!212 &212290384408780644
 SpriteRenderer:

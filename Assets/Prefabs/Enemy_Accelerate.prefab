@@ -36,13 +36,13 @@ GameObject:
   - component: {fileID: 4747935322499728}
   - component: {fileID: 212661786706391876}
   - component: {fileID: 50803450665936390}
-  - component: {fileID: 61384674026543566}
   - component: {fileID: 82356464821606962}
   - component: {fileID: 114966580183504332}
   - component: {fileID: 95822028666953316}
+  - component: {fileID: 70289783411321354}
   m_Layer: 0
   m_Name: Enemy_Accelerate
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,13 +89,13 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8cf0038cfa473214f8d77b0c1fc604ef, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61384674026543566
-BoxCollider2D:
+--- !u!70 &70289783411321354
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -106,19 +106,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5294118, y: 0.4864865}
-    oldSize: {x: 0.35416666, y: 0.7708333}
-    newSize: {x: 0.35416666, y: 0.7708333}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.010416672, y: 0.010416657}
+  m_Size: {x: 0.35416666, y: 0.7708333}
+  m_Direction: 0
 --- !u!82 &82356464821606962
 AudioSource:
   m_ObjectHideFlags: 1

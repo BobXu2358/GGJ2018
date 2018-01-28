@@ -90,7 +90,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8cf0038cfa473214f8d77b0c1fc604ef, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508367656035878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274ab3b61220ae24da6ed4f36b92a76f, type: 3}
   m_Name: 
@@ -249,7 +249,7 @@ MonoBehaviour:
   mapGroundTf: {fileID: 0}
   mapGroundBc: {fileID: 0}
   moveSpeed: 3
-  jumpForce: 150
+  jumpForce: 200
   Projectile: {fileID: 1644644534857110, guid: 0c3478ddf1d7ee64c81ab242babb42c6, type: 2}
   fireSpeed: 2
   fireOffset: {fileID: 4448407884916590}
@@ -257,6 +257,7 @@ MonoBehaviour:
   MultiShotBullet: {fileID: 0}
   PiercingBullet: {fileID: 0}
   SprintSpeed: 0
+  flashDistance: 0
   success: 0
 --- !u!212 &212970562463381398
 SpriteRenderer:

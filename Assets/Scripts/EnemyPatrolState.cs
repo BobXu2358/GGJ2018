@@ -150,7 +150,7 @@ public class EnemyPatrolState : EnemyBaseState
         else
         {
             _enemy._selfObj.transform.position = tartgetPos;
-            Debug.Log(_enemy.initPos);
+            //Debug.Log(_enemy.initPos);
 
             if (ShowTime > 0)
             {

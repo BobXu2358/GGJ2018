@@ -27,12 +27,13 @@ public class PlayerAction : MonoBehaviour {
     private float FadeTime = 0.3f;
     private float ShowTime = 0.3f;
     private Color tempColor = Color.white;
-    private float alphaChange = Time.deltaTime / 0.3f;
+    private float alphaChange;
 
     void Start()
     {
         realTimeSpeed = moveSpeed;
         anim = GetComponent<Animator>();
+        alphaChange = Time.deltaTime / 0.3f;
     }
 
     void FixedUpdate()
@@ -93,13 +94,14 @@ public class PlayerAction : MonoBehaviour {
                 //let it go
                 mindBullet.GetComponent<Rigidbody2D>().velocity = dir * fireSpeed;
             }
-            /*float fallMultiplier = 2.5f;
+
+            float fallMultiplier = 2.5f;
             float lowJumpMultiplier = 2f;
             if(playerRb.velocity.y < 0){
                 playerRb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }else if(playerRb.velocity.y > 0 && !Input.GetButton("Jump")){
                 playerRb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }*/
+            }
 
             if (playerType == CharacterType.Accelerate)
             {
@@ -144,8 +146,23 @@ public class PlayerAction : MonoBehaviour {
     void OnCollisionStay2D(Collision2D collisionObject){
         //Check if the player is on the ground to jump
         //if(playerTf.position.y - playerBc.size.y / 2 >= collisionObject.gameObject.transform.position.y + collisionObject.gameObject.GetComponent<BoxCollider2D>().size.y / 2){
-        if(collisionObject.gameObject.tag == "Obstacle")
-            grounded = true;
+        if(collisionObject.gameObject.tag == "Obstacle"){
+            Vector3 tmpPoint = playerTf.position + new Vector3(-playerBc.size.x / 3, -playerBc.size.y / 2, 0);
+            RaycastHit2D hit = Physics2D.Raycast(tmpPoint, new Vector2(0, -1));
+            Debug.DrawLine(tmpPoint, hit.point);
+            if(hit.collider != null){
+                if(hit.collider.gameObject.tag == "Obstacle" && Mathf.Abs(tmpPoint.y - hit.point.y) <= 0.05f){
+                    grounded = true;
+                }
+            }
+            tmpPoint = playerTf.position + new Vector3(playerBc.size.x / 3, -playerBc.size.y / 2, 0);
+            hit = Physics2D.Raycast(tmpPoint, new Vector2(0, -1));
+            if(hit.collider != null){
+                if(hit.collider.gameObject.tag == "Obstacle" && Mathf.Abs(tmpPoint.y - hit.point.y) <= 0.05f){
+                    grounded = true;
+                }
+            }
+        }
         //}
     }
 
